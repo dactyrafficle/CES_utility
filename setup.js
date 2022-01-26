@@ -7,8 +7,11 @@
 
 let myinput_delta, myinput_alpha, myinput_beta;
 let obj;
-let b, c;
-  
+
+let b = [];
+let c = [];
+
+
 (function() {
 
   window.addEventListener('load', function() {
@@ -19,31 +22,57 @@ let b, c;
 
     myinput_delta.addEventListener('input', function() {
       obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
-      UPDATE_BOX(b, obj);
+      UPDATE_BOX(b[0], obj);
     });
     myinput_alpha.addEventListener('input', function() {
       obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
-      UPDATE_BOX(b, obj);
+      UPDATE_BOX(b[0], obj);
     });
     myinput_beta.addEventListener('input', function() {
       obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
-      UPDATE_BOX(b, obj);
+      UPDATE_BOX(b[0], obj);
     });
 
 
-    b = new Box();
-    c = b.RETURN_CANVAS();
-    container_001.appendChild(c);
+    b[0] = new Box();
+    c[0] = b[0].RETURN_CANVAS();
+    container_indifference_curve.appendChild(c[0]);
     
-    b.CANVAS_SIZE(500, 500);    // this is the number of pixels
-    b.RANGE_X(-1, 11);          // set the range in x
-    b.RANGE_Y(-1, 11);          // set the range in y 
-
-    b.ADD_CLICK();
-    b.ADD_MOUSEMOVE();
+    b[0].CANVAS_SIZE(500, 500);    // this is the number of pixels
+    b[0].RANGE_X(-1, 11);          // set the range in x
+    b[0].RANGE_Y(-1, 11);          // set the range in y 
 
     obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
-    UPDATE_BOX(b, obj);
+    UPDATE_BOX(b[0], obj);
+    
+    
+    b[1] = new Box();
+    c[1] = b[1].RETURN_CANVAS();
+    container_utility_vs_delta.appendChild(c[1]);
+    
+    b[1].CANVAS_SIZE(500, 500);    // this is the number of pixels
+    b[1].RANGE_X(-1, 11);          // set the range in x
+    b[1].RANGE_Y(-1, 11);          // set the range in y 
+    
+    b[1].LINE_WIDTH(1);
+    b[1].STROKE_STYLE('#ddd');
+    b[1].SHOW_GRID_X();
+    b[1].SHOW_GRID_Y();
+    
+    
+    let allocation = b[1].GET_CES_MARSHALLIAN_ALLOCATION({
+      'delta':-0.1,
+      'alpha':0.5,
+      'beta':0.5,
+      'px':1.25,
+      'py':1,
+      'budget':20
+    });
+    console.log(allocation);
+    
+    b[1].FILL_STYLE('#fc0a');
+    b[1].RADIUS(3);
+    b[1].SHOW_VALUE(allocation);
 
   }); // CLOSING window.onload
 })(); // CLOSING anon
@@ -64,8 +93,8 @@ function UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta) {
     'alpha':alpha,  
     'beta':beta,
     'u':null,
-    'x':b.data.range.x.avg,
-    'y':b.data.range.y.avg
+    'x':b[0].data.range.x.avg,
+    'y':b[0].data.range.y.avg
   };
 }
 
@@ -90,7 +119,7 @@ function UPDATE_BOX(box, obj) {
   
   box.LINE_WIDTH(2);
   box.STROKE_STYLE('#fc0a');
-  let a = box.SHOW_INDIFFERENCE_CURVE(obj);
+  let a = box.SHOW_CES_INDIFFERENCE_CURVE(obj);
   
   // THE RESTRICTED DOMAIN AND RANGE WHEN DELTA < 0
   /*

@@ -10,7 +10,8 @@
   
   
   <script src='Box.js'></script>
-  <script src='SHOW_INDIFFERENCE_CURVE.js'></script>
+  <script src='SHOW_CES_INDIFFERENCE_CURVE.js'></script>
+  <script src='GET_CES_MARSHALLIAN_ALLOCATION.js'></script>
   
   <script src="./katex/katex.min.js"></script>
   <link rel="stylesheet" href="./katex/katex.min.css" >
@@ -67,9 +68,35 @@
  
 </div>
 
-<div class='box' id='container_001'></div>
+<div class='box' id='container_indifference_curve'></div>
 
 </div>
+
+
+<div class='section border'>
+
+  <div class='section'><h4> utility & the marshallian allocation vs delta </h4></div>
+
+  <div class='box'>
+  <table class='mytable'>
+    <!--
+    <tr><td> delta, <span class='math'>\delta</span> </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
+    <tr><td> alpha, <span class='math'>\alpha</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_alpha' /></td></tr>
+    <tr><td> beta, <span class='math'>\beta</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_beta' /></td></tr>
+    -->
+    <tr><td> px, <span class='math'>p_x</span> </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_px' /></td></tr>
+    <tr><td> py, <span class='math'>p_y</span> </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_py' /></td></tr>
+    <tr><td> budget, <span class='math'>M</span> </td><td><input class='myinputs' type='number' value=100 step=1 id='myinput_budget' /></td></tr>
+  </table>
+  </div>
+  
+  <div class='box' id='container_utility_vs_delta'></div>
+
+  <div class='box' id='container_allocation_vs_delta'></div>
+
+
+</div>
+
 
 <div class='box'>
 
