@@ -23,44 +23,60 @@
 
 </div>
 
-<div class='section'>
+<div class='section border'>
 
+  <div class='section'>
+    <h4> ces utility </h4>
+    <p><span class='math'> u = \dfrac{\alpha}{\delta} \cdot x^{\delta} + \dfrac{\beta}{\delta} \cdot y^{\delta} </span></p>
+  </div>
+
+</div>
+
+<div class='section border'>
+
+  <div class='section'><h4> the indifference curve </h4></div>
 
 
 <div class='box'>
 
   <table class='mytable'>
-    <tr><td> delta </td><td><input type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
-    <tr><td> alpha </td><td><input type='number' value=0.50 step=0.01 id='myinput_alpha' /></td></tr>
-    <tr><td> beta </td><td><input type='number' value=0.50 step=0.01 id='myinput_beta' /></td></tr>
+    <tr><td> delta, <span class='math'>\delta</span> </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
+    <tr><td> alpha, <span class='math'>\alpha</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_alpha' /></td></tr>
+    <tr><td> beta, <span class='math'>\beta</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_beta' /></td></tr>
   </table>
 
 <pre>
 
- <span class='comment'>// u = (alpha/delta)*x**delta + (beta/delta)*y**delta </span>
-
+ <span class='comment'>// IF u ISNT SUPPLIED, ITS CALCULATED </span>
+ 
  b.LINE_WIDTH(2);
- b.STROKE_STYLE('#fc0');
+ b.STROKE_STYLE('#fc0a');
  b.SHOW_INDIFFERENCE_CURVE({
-  'delta':delta,
-  'alpha':alpha,  
-  'beta':beta,
+  'delta':delta,     <span class='comment'>// REQUIRED </span>
+  'alpha':alpha,     <span class='comment'>// REQUIRED </span>
+  'beta':beta,       <span class='comment'>// REQUIRED </span>
   'u':null,
   'x':b.data.range.x.avg,
   'y':b.data.range.y.avg
  });
- 
- // 0.75, 1.23, 0.50 : buggy 
- // 1.00, 1.23, 0.50 : buggy 
+  
+
+ <span class='comment'>// 0.90, 1.23, 0.50 : buggy </span>
+ <span class='comment'>// delta = -145 : verify </span>
 </pre>
  
 </div>
 
 <div class='box' id='container_001'></div>
 
+</div>
+
 <div class='box'>
 
-  <h4> <span class='math'> \delta \lt 0 </span> </h4>
+  <h4> When <span class='math'> \delta \lt 0 </span> </h4>
+
+  <p> For cobb-douglas preferences, you can take any x or y given u as long as they are greater than 0. Or rather, the domain and range both go from <span class='math'> (0,\infin] </span></p>
+  <p> That isn't the case when <span class='math'> \delta \lt 0 </span>. Both the domain and range becomes restricted. </p>
 
 <p> <span class='math'> u = \dfrac{\alpha}{\delta} \cdot x^{\delta} + \dfrac{\beta}{\delta} \cdot y^{\delta} </span></p>
 <p> <span class='math'> u(\delta, \alpha, \beta, x, y) = u(\delta, \alpha, x) + u(\delta, \beta, y) </span></p>

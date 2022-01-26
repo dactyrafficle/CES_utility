@@ -1,4 +1,10 @@
 
+
+// graph of utility v delta
+// when does linear reach 0 ?
+// show expansion path
+// when to make it full leontieff?
+
 let myinput_delta, myinput_alpha, myinput_beta;
 let obj;
 let b, c;
@@ -45,6 +51,11 @@ let b, c;
 function UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta) {
     
   let delta = parseFloat(myinput_delta.value);
+  if (delta > 1) {
+    delta = 1;
+  }
+  myinput_delta.value = delta.toFixed(2);
+  
   let alpha = parseFloat(myinput_alpha.value);
   let beta = parseFloat(myinput_beta.value);
   
@@ -65,9 +76,36 @@ function UPDATE_BOX(box, obj) {
   box.STROKE_STYLE('#ddd');
   box.SHOW_GRID_X();
   box.SHOW_GRID_Y();
-
+  
+  box.LINE_WIDTH(2);
+  box.STROKE_STYLE('#999');
+  box.CONNECT_VALUES([
+    {'x':0,'y':box.data.range.y.min},
+    {'x':0,'y':box.data.range.y.max}
+  ]);
+  box.CONNECT_VALUES([
+    {'x':box.data.range.x.min,'y':0},
+    {'x':box.data.range.x.max,'y':0}
+  ]);
+  
   box.LINE_WIDTH(2);
   box.STROKE_STYLE('#fc0a');
   let a = box.SHOW_INDIFFERENCE_CURVE(obj);
-  console.log(a);
+  
+  // THE RESTRICTED DOMAIN AND RANGE WHEN DELTA < 0
+  /*
+  if (a.delta < 0) {
+    box.LINE_WIDTH(1);
+    box.STROKE_STYLE('#ddd');
+    box.CONNECT_VALUES([
+      {'x':a.x_min,'y':box.data.range.y.min},
+      {'x':a.x_min,'y':box.data.range.y.max}
+    ]);
+    box.CONNECT_VALUES([
+      {'x':box.data.range.x.min,'y':a.y_min},
+      {'x':box.data.range.x.max,'y':a.y_min}
+    ]);
+  }
+  */
+
 }

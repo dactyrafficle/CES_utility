@@ -2,7 +2,9 @@
 
  u = (alpha/delta)*x**delta + (beta/delta)*y**delta
 
- obj = {
+ b.LINE_WIDTH(2);
+ b.STROKE_STYLE('#fc0a');
+ b.SHOW_INDIFFERENCE_CURVE({
   'delta':delta,    // must
   'alpha':alpha,    // must
   'beta':beta,      // must
@@ -14,13 +16,13 @@
   'py':py
  }
 
- b.LINE_WIDTH(1);
- b.STROKE_STYLE('#ddd');
- b.FILL_STYLE('#fc0a');
-
-
   FUNCTIONAL DEPENDENCIES
   1. this.CONNECT_VALUES(arr)
+  
+  ** verifiy when delta = -145
+  ** verify when delta = 0.90 to 1.00
+  ** when does it hit 0 ?
+  ** how arr is sorted
 
 */
 
@@ -164,74 +166,3 @@ Box.prototype.SHOW_INDIFFERENCE_CURVE = function(obj) {
   }
 }
 
-
-/*
-  let dx_pixel = 2; // if dx_pixel = 2, then we calculate x-y every 2nd pixel
-  let dx = dx_pixel * (this.data.range.x.span / this.data.dimension.w );
-
-  let temp = {
-    'x':this.data.range.x.min,
-    'y':null
-  };
-  
-  if (delta === 0) {
-    temp.y = (u/this.data.range.x.min**alpha)**beta_inv;  // cobb-douglas
-    console.log(temp);
-  } else {
-    temp.y = ((delta/beta)*u - (alpha/beta)*this.data.range.x.min**delta)**delta_inv; // else
-  }
-  
-  let counter = 0;
-  
-  if (delta === 0) {
-    // cobb-douglas
-    console.log('cobb-douglas');
-    
-    for (let x = this.data.range.x.min + dx; x < this.data.range.x.max + dx; x += dx) {
-
-      let y = (u/x**alpha)**beta_inv;
-      let val = {'x':x, 'y': y};
-      
-      // AS LONG AS ONE POINT IS IN RANGE, WE DRAW THE LINE
-      // if (this.VALUE_IN_RANGE(temp) || this.VALUE_IN_RANGE(val)) {
-      if (this.VALUE_IN_RANGE(temp) || this.VALUE_IN_RANGE(val)) {
-        this.CONNECT_VALUES([temp, val]);
-      }
-      temp = val;
-    } // closing for loop
-  
-  } else {
-    // else case
-    console.log('else case');
-    for (let x = this.data.range.x.min + dx; x < this.data.range.x.max+dx; x += dx) {
-
-      let y = ((delta/beta)*u - (alpha/beta)*x**delta)**delta_inv;
-      let val = {'x':x, 'y': y};
-      
-      let showdot = false;
-      
-      // AS LONG AS ONE POINT IS IN RANGE, WE DRAW THE LINE
-      // if (this.VALUE_IN_RANGE(temp) || this.VALUE_IN_RANGE(val)) {
-      if (this.VALUE_IN_RANGE(temp) || this.VALUE_IN_RANGE(val)) {
-        this.CONNECT_VALUES([temp, val]);
-        showdot = true;
-      }
-      
-      if (showdot) {
-        // console.log(temp);
-        this.FILL_STYLE('#5d5d');
-        this.RADIUS(2);
-        this.SHOW_VALUE({'x':val.x,'y':this.data.range.y.avg});
-      }
-      
-      temp = val;
-      
-
-
-      
-      
-      counter++;
-    } // closing for loop
-      
-  } // closing else statement
-*/
