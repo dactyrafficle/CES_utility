@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title> CES utility </title>
+
+  <link rel="stylesheet" href="a.css">
+  <link rel="icon" href="a.png">
+  <script src="./a.js"></script>
+  
+  
+  <script src='Box.js'></script>
+  <script src='SHOW_INDIFFERENCE_CURVE.js'></script>
+  
+  <script src="./katex/katex.min.js"></script>
+  <link rel="stylesheet" href="./katex/katex.min.css" >
+  <script src="./setup.js"></script>
+
+</head>
+
+<body>
+
+
+</div>
+
+<div class='section'>
+
+
+
+<div class='box'>
+
+  <table class='mytable'>
+    <tr><td> delta </td><td><input type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
+    <tr><td> alpha </td><td><input type='number' value=0.50 step=0.01 id='myinput_alpha' /></td></tr>
+    <tr><td> beta </td><td><input type='number' value=0.50 step=0.01 id='myinput_beta' /></td></tr>
+  </table>
+
+<pre>
+
+ <span class='comment'>// u = (alpha/delta)*x**delta + (beta/delta)*y**delta </span>
+
+ b.LINE_WIDTH(2);
+ b.STROKE_STYLE('#fc0');
+ b.SHOW_INDIFFERENCE_CURVE({
+  'delta':delta,
+  'alpha':alpha,  
+  'beta':beta,
+  'u':null,
+  'x':b.data.range.x.avg,
+  'y':b.data.range.y.avg
+ });
+ 
+ // 0.75, 1.23, 0.50 : buggy 
+ // 1.00, 1.23, 0.50 : buggy 
+</pre>
+ 
+</div>
+
+<div class='box' id='container_001'></div>
+
+<div class='box'>
+
+  <h4> <span class='math'> \delta \lt 0 </span> </h4>
+
+<p> <span class='math'> u = \dfrac{\alpha}{\delta} \cdot x^{\delta} + \dfrac{\beta}{\delta} \cdot y^{\delta} </span></p>
+<p> <span class='math'> u(\delta, \alpha, \beta, x, y) = u(\delta, \alpha, x) + u(\delta, \beta, y) </span></p>
+
+<p> first: <span class='math'>\alpha, \beta, x, y \gt 0 </span> </p>
+<p> you could consider the case where any of them are equal to 0, but then you could just remove the term </p>
+
+<p> if <span class='math'>\delta \lt 0 </span> then :</p>
+<ul>
+  <li><p><span class='math'> \dfrac{\alpha}{\delta} \cdot x^{\delta} \lt 0 </span></p>
+  <li><p><span class='math'> \dfrac{\beta}{\delta} \cdot y^{\delta} \lt 0 </span></p>
+  <li><p>therefore <span class='math'> u \lt 0 </span></p>
+</ul>
+
+<p> that is interesting. if you have numbers, a, b, c &gt; 0, and c = a + b, then a, b &lt; c </p>
+<p> a + b = c, a = c - b, a &gt; 0, c - b &gt; 0, c &gt; b and the same for a</p>
+
+<p> in this case, it's the reverse. so both <span class='math'> u(\delta, \alpha, x), u(\delta, \beta, y) \lt u </span></p>
+
+<p> so that means that when <span class='math'> \delta \lt 0 </span> there is actually a lower limit on x and y </p>
+
+<ul>
+ <li><p><span class='math'> \dfrac{\alpha}{\delta} \cdot x^{\delta} \lt u </span></p>
+ <li><p><span class='math'> \dfrac{\beta}{\delta} \cdot y^{\delta} \lt u </span></p>
+</ul>
+
+<p> <span class='math'> x_{min} = \big ( \dfrac{\delta}{\alpha} \cdot u \big ) ^{\frac{1}{\delta}} </span></p>
+<p> <span class='math'> y_{min} = \big( \dfrac{\delta}{\beta} \cdot u \big ) ^{\frac{1}{\delta}} </span></p>
+
+<h4> it is relevant </h4>
+<p> I wouldn't have figured this out if I hadn't worked on animating it. The mechanism I was using to graph it was producing weird results, so I had to examine this really closely. </p>
+
+<p> as long as i follow this, I can use <span class='math'> y = \Big ( \dfrac{\delta}{\beta} \cdot u - \dfrac{\alpha}{\beta} \cdot x ^{\delta}  \Big ) ^{\frac{1}{\delta}} </span>
+
+<p> remember not to assume here in consumer theory that alpha + beta = 1 </p>
+
+</div>
+
+</div>
+
+</body>
+
+<script></script>
+
+</html>

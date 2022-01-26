@@ -1,0 +1,21 @@
+pre {
+  padding: 1vh;
+}
+
+.box {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  margin: 1vh;
+  padding: 1vh;
+}
+.mytable {
+  border-collapse: collapse;
+}
+.mytable td {
+  border: 1px solid #ddd;
+  padding: 1vh;
+}
+.comment {
+  color: #2b2f;
+}
