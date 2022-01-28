@@ -21,15 +21,15 @@ let c = [];
     myinput_beta = document.getElementById('myinput_beta');
 
     myinput_delta.addEventListener('input', function() {
-      obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
+      obj = UPDATE_OBJ(obj, myinput_delta, myinput_alpha, myinput_beta);
       UPDATE_BOX(b[0], obj);
     });
     myinput_alpha.addEventListener('input', function() {
-      obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
+      obj = UPDATE_OBJ(obj, myinput_delta, myinput_alpha, myinput_beta);
       UPDATE_BOX(b[0], obj);
     });
     myinput_beta.addEventListener('input', function() {
-      obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
+      obj = UPDATE_OBJ(obj, myinput_delta, myinput_alpha, myinput_beta);
       UPDATE_BOX(b[0], obj);
     });
 
@@ -42,7 +42,7 @@ let c = [];
     b[0].RANGE_X(-1, 11);          // set the range in x
     b[0].RANGE_Y(-1, 11);          // set the range in y 
 
-    obj = UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta);
+    obj = UPDATE_OBJ(obj, myinput_delta, myinput_alpha, myinput_beta);
     UPDATE_BOX(b[0], obj);
     
     
@@ -68,7 +68,6 @@ let c = [];
       'py':1,
       'budget':20
     });
-    console.log(allocation);
     
     b[1].FILL_STYLE('#fc0a');
     b[1].RADIUS(3);
@@ -77,62 +76,111 @@ let c = [];
   }); // CLOSING window.onload
 })(); // CLOSING anon
 
-function UPDATE_OBJ(myinput_delta, myinput_alpha, myinput_beta) {
-    
-  let delta = parseFloat(myinput_delta.value);
-  if (delta > 1) {
-    delta = 1;
-  }
-  myinput_delta.value = delta.toFixed(2);
+function UPDATE_OBJ(obj, myinput_delta, myinput_alpha, myinput_beta) {
   
+  let delta = parseFloat(myinput_delta.value);
   let alpha = parseFloat(myinput_alpha.value);
   let beta = parseFloat(myinput_beta.value);
   
+  if (delta + 1 !== delta + 1) {
+    myinput_delta.value = obj.delta.toFixed(2);
+    return obj;
+  }
+  
+  if (alpha + 1 !== alpha + 1) {
+    myinput_alpha.value = obj.alpha.toFixed(2);
+    return obj;
+  }
+  
+  if (beta + 1 !== beta + 1) {
+    myinput_beta.value = obj.beta.toFixed(2);
+    return obj;
+  }
+  
+  if (delta > 1) {
+    delta = 1;
+  }
+  if (alpha > 12) {
+    alpha = 12;
+  }
+  if (beta > 12) {
+    beta = 12;
+  }
+  if (alpha < 0.01) {
+    alpha = 0.01;
+  }
+  if (beta < 0.01) {
+    beta = 0.01;
+  }
+  // 0.25, 0.10, 1.00 is buggy....why?
+  
+  myinput_delta.value = delta.toFixed(2);
+  myinput_alpha.value = alpha.toFixed(2);
+  myinput_beta.value = beta.toFixed(2);
+
   return {
     'delta':delta,
     'alpha':alpha,  
     'beta':beta,
     'u':null,
-    'x':b[0].data.range.x.avg,
-    'y':b[0].data.range.y.avg
+    'x':5.5,
+    'y':4.7
   };
 }
 
-function UPDATE_BOX(box, obj) {
-  box.CLEAR_CANVAS();
+function UPDATE_BOX(b, obj) {
 
-  box.LINE_WIDTH(1);
-  box.STROKE_STYLE('#ddd');
-  box.SHOW_GRID_X();
-  box.SHOW_GRID_Y();
+  b.CLEAR_CANVAS();
+
+  b.LINE_WIDTH(1);
+  b.STROKE_STYLE('#ddd');
+  b.SHOW_GRID_X();
+  b.SHOW_GRID_Y();
   
-  box.LINE_WIDTH(2);
-  box.STROKE_STYLE('#999');
-  box.CONNECT_VALUES([
-    {'x':0,'y':box.data.range.y.min},
-    {'x':0,'y':box.data.range.y.max}
-  ]);
-  box.CONNECT_VALUES([
-    {'x':box.data.range.x.min,'y':0},
-    {'x':box.data.range.x.max,'y':0}
-  ]);
+  // THE AXIS
+  b.LINE_WIDTH(2);
+  b.STROKE_STYLE('#999');
+  b.SHOW_AXES();
   
-  box.LINE_WIDTH(2);
-  box.STROKE_STYLE('#fc0a');
-  let a = box.SHOW_CES_INDIFFERENCE_CURVE(obj);
+  b.LINE_WIDTH(2);
+  b.STROKE_STYLE('#fc0a');
+  let a = b.SHOW_CES_INDIFFERENCE_CURVE(obj);
+  console.log(a);
+  
+  b.FILL_STYLE('#fc0a');
+  b.RADIUS(2);
+  b.SHOW_VALUE(obj);
+  
+  /*
+  // LEONTIEFF : HELP WITH 
+  
+  let arr2 = [];
+  arr2[0] = {
+    'x':0,
+    'y':0
+  }; 
+  arr2[1] = {
+    'x':b.data.range.x.max,
+    'y':obj.beta / obj.alpha * b.data.range.x.max
+  };
+  b.LINE_WIDTH(1);
+  b.STROKE_STYLE('#ddd'); 
+  b.CONNECT_VALUES(arr2);
+  */
   
   // THE RESTRICTED DOMAIN AND RANGE WHEN DELTA < 0
+  
   /*
   if (a.delta < 0) {
-    box.LINE_WIDTH(1);
-    box.STROKE_STYLE('#ddd');
-    box.CONNECT_VALUES([
-      {'x':a.x_min,'y':box.data.range.y.min},
-      {'x':a.x_min,'y':box.data.range.y.max}
+    b.LINE_WIDTH(1);
+    b.STROKE_STYLE('#999');
+    b.CONNECT_VALUES([
+      {'x':a.x_min,'y':b.data.range.y.min},
+      {'x':a.x_min,'y':b.data.range.y.max}
     ]);
-    box.CONNECT_VALUES([
-      {'x':box.data.range.x.min,'y':a.y_min},
-      {'x':box.data.range.x.max,'y':a.y_min}
+    b.CONNECT_VALUES([
+      {'x':b.data.range.x.min,'y':a.y_min},
+      {'x':b.data.range.x.max,'y':a.y_min}
     ]);
   }
   */

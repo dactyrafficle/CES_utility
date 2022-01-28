@@ -28,22 +28,31 @@
 
   <div class='section'>
     <h4> ces utility </h4>
-    <p><span class='math'> u = \dfrac{\alpha}{\delta} \cdot x^{\delta} + \dfrac{\beta}{\delta} \cdot y^{\delta} </span></p>
+    <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></p>
   </div>
 
 </div>
 
+
 <div class='section border'>
 
-  <div class='section'><h4> the indifference curve </h4></div>
+  <div class='section'>
+    <h4> the indifference curve </h4>
+    <p> i just picked a point at random, like <span class='inline-code'>(5.5,4.7)</span>. then given delta, alpha, beta, solved for u. then used u to plot the idc </p>
+  </div>
+ 
 
+ 
+<div class='section'>
 
 <div class='box'>
 
+  <!-- 0.01, 0.70, 0.40 -->
+
   <table class='mytable'>
     <tr><td> delta, <span class='math'>\delta</span> </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
-    <tr><td> alpha, <span class='math'>\alpha</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_alpha' /></td></tr>
-    <tr><td> beta, <span class='math'>\beta</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_beta' /></td></tr>
+    <tr><td> alpha, <span class='math'>\alpha</span> </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha' /></td></tr>
+    <tr><td> beta, <span class='math'>\beta</span> </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta' /></td></tr>
   </table>
 
 <pre>
@@ -52,26 +61,192 @@
  
  b.LINE_WIDTH(2);
  b.STROKE_STYLE('#fc0a');
- b.SHOW_INDIFFERENCE_CURVE({
+ b.SHOW_CES_INDIFFERENCE_CURVE({
   'delta':delta,     <span class='comment'>// REQUIRED </span>
   'alpha':alpha,     <span class='comment'>// REQUIRED </span>
   'beta':beta,       <span class='comment'>// REQUIRED </span>
   'u':null,
-  'x':b.data.range.x.avg,
-  'y':b.data.range.y.avg
+  'x':5.5,
+  'y':4.7
  });
-  
+ 
+ b.FILL_STYLE('#fc0a');
+ b.RADIUS(2);
+ b.SHOW_VALUE(obj);
 
- <span class='comment'>// 0.90, 1.23, 0.50 : buggy </span>
- <span class='comment'>// delta = -145 : verify </span>
 </pre>
  
 </div>
 
 <div class='box' id='container_indifference_curve'></div>
 
+<p> the leontieff is weird, is it u=min(x,y) or u=min(x/alpha,y/beta) ?? </p>
+<p> my graph makes it look like u=min(x,y) </p>
+
 </div>
 
+</div>
+
+<div class='section border'>
+
+  <div class='section'>
+    <h4> its form </h4>
+  </div>
+  
+  <div class='box'>
+  
+  <table class='mytable'>
+    <tr>
+      <td><p> desc</p></td>
+      <td><p> delta </p></td>
+      <td><p> desc</p></td>
+      <td><p> form </p></td>
+      <td><p> desc</p></td>
+      <td><p> for graphing </p></td>
+    </tr>
+  
+  
+    <tr>
+      <td><p> Linear </p></td>
+      <td><span class='math'> \delta = 1 </span></td>
+      <td><p> sub <span class='inline-code'>&delta; = 1</span> into <span class='inline-code'>u</span> </p></td>
+      <td><span class='math'> u = \alpha x + \beta y </span></td>
+      <td><p> just rearrange u </p></td>
+      <td><p><span class='math'> y = \frac{1}{\beta} \cdot (u - \alpha \cdot x) </span></p>
+          <p><span class='math'> y_{int} = \big ( 0, \frac{u}{\beta} \big ) </span></p>
+          <p><span class='math'> x_{int} = \big ( \frac{u}{\alpha}, 0 \big )  </span></p></td>
+    </tr>
+    
+    <tr>
+      <td><p> Log </p></td>
+      <td><span class='math'> \delta = 0 </span></td>
+      <td><p> theres a tricky limit </p></td>
+      <td><p><span class='math'> u = \alpha \ln x + \beta \ln y </span></p>
+          <p><span class='math'> u = x^{\alpha} \cdot y^{\beta} </span></p>
+      <td></td>
+      <td><p><span class='math'> \cdot </span></p>
+          <p><span class='math'> y = \bigg ( \dfrac{u}{x^{\alpha}} \bigg ) ^ {\frac{1}{\beta}} </span></p></td>
+    </tr>
+    
+    <tr>
+      <td><p> Leontieff </p></td>
+      <td><span class='math'> \delta = -\infin </span></td>
+      <td><p> theres a tricky limit </p></td>
+      <td> ** <span class='math'> u = \min(x,y) </span></td>
+    </tr>
+    
+    <tr>
+      <td><p> Else </p></td>
+      <td><p><span class='math'> 0 \lt \delta \lt 1 </span></p>
+          <p><span class='math'> -\infin \lt \delta \lt 0 </span></p></td>
+      <td><p> nothing </p></td>
+      <td><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></td>
+      <td><p> just rearrange u </p></td>
+      <td>
+        <p><span class='math'> y = \Big ( \dfrac{u^{\delta} - \alpha \cdot x^{\delta}}{\beta} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \gt \alpha \cdot x^{\delta}</span></p>
+        <p><span class='math'> x = \Big ( \dfrac{u^{\delta} - \beta \cdot x^{\delta}}{\alpha} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \gt \beta \cdot y^{\delta}</span></p>
+      </td>
+    </tr>
+  </table>
+  
+  </div>
+
+</div>
+
+
+
+
+<div class='section border'>
+
+  <div class='section'>
+    <h4> marshallian demand </h4>
+    <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></p>
+    
+    <p><span class='math'> L = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } + \lambda \cdot \big ( M - p_x \cdot x - p_y \cdot y \big ) </span></p>
+    <p> taking for granted that theyre equality constraint <p>
+    
+    <p><span class='math'> L_x = \dfrac{1}{\delta} \cdot \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ {\dfrac{1}{\delta} - 1} \cdot \delta \cdot \alpha \cdot x ^ {\delta - 1} - \lambda p_x = 0 </span></p>
+    <p><span class='math'> L_x = u ^ {1-\delta} \cdot \alpha \cdot x^{\delta - 1} - \lambda \cdot p_x = 0 </span></p>
+    
+    <p> equating <span class='math'>L_x</span> and <span class='math'>L_y</span> on <span class='math'>\lambda</span> : </p>
+    <p><span class='math'>  \bigg ( \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} \bigg ) ^ {\frac{1}{\delta - 1}} = \dfrac{y}{x} </span></p> 
+    
+    <h4> Allocation expansion path </h4>
+    
+    <p><span class='math'> A = \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} </span></p>
+    <p><span class='math'> B = {\frac{1}{\delta - 1}} </span></p>
+    <p><span class='math'>  y = x \cdot C </span></p>
+    <p> A contains all of the parameters that relate price-preference between x and y. </p>
+    <p> if A = 1, then it doesnt matter. x = y </p>
+    <p> But if A != 1, then delta matters </p>
+    <p> When delta is very negative, B is close to 0, and negative. </p>
+    <p> When delta is close to 1 from the left, B is very large and very negative </p>
+    <table class='mytable'>
+      <tr><td>delta</td><td>B</td><td>C</td><td>result</td></tr>
+      <tr><td>very small</td><td>0, negative</td><td>B^0 = 1</td><td>y=x : A doesnt matter at all </td></tr>
+      <tr><td>0</td><td>B = -1</td><td>B^{-1} = 1/B</td><td>C = A. Maybe this is neutral </td></tr>
+      <tr><td>close to 1</td><td>-infin</td><td>B^{-infin} = 0</td><td>A matters a lot</td></tr>
+    </table>
+    <div id='container_expansion_path'></div>
+  </div>
+  
+  <script>
+  
+  (function() {
+    
+    let b, c;
+    let A = 1;
+    window.addEventListener('load', function() {
+      b = new Box();
+      c = b.RETURN_CANVAS();
+      container_expansion_path.appendChild(c);
+
+      b.CANVAS_SIZE(500, 500);     // this is the number of pixels 
+      b.RANGE_X(-5, 1);           // set the range in x 
+      b.RANGE_Y(-5, 11);           // set the range in y 
+
+      b.CLEAR_CANVAS();
+
+      // DRAW AN X-Y GRID 
+      b.LINE_WIDTH(1);
+      b.STROKE_STYLE('#ddd');
+      b.SHOW_GRID_X();
+      b.SHOW_GRID_Y();
+
+      b.LINE_WIDTH(2);
+      b.STROKE_STYLE('#999');
+      b.SHOW_AXES();
+      
+      let A = 1.5;
+      let B = [];
+      let C = [];
+
+      let x_min = b.data.range.x.min;
+      let x_max = b.data.range.x.max;
+      let dx = 0.01;
+      let index = 0;
+      for (let x = x_min; x < x_max; x += dx) {
+        B[index] = {'x':x,'y':1/(x-1)};
+        C[index] = {'x':x,'y':A**B[index].y};
+        index++;
+      }
+
+      b.LINE_WIDTH(1);
+      b.STROKE_STYLE('#fc0a');
+      b.CONNECT_VALUES(B);
+      
+      b.LINE_WIDTH(1);
+      b.STROKE_STYLE('#5d5d');
+      b.CONNECT_VALUES(C);
+
+      
+    });
+  })();
+  
+  </script>
+  
+
+</div>
 
 <div class='section border'>
 
@@ -98,49 +273,7 @@
 </div>
 
 
-<div class='box'>
 
-  <h4> When <span class='math'> \delta \lt 0 </span> </h4>
-
-  <p> For cobb-douglas preferences, you can take any x or y given u as long as they are greater than 0. Or rather, the domain and range both go from <span class='math'> (0,\infin] </span></p>
-  <p> That isn't the case when <span class='math'> \delta \lt 0 </span>. Both the domain and range becomes restricted. </p>
-
-<p> <span class='math'> u = \dfrac{\alpha}{\delta} \cdot x^{\delta} + \dfrac{\beta}{\delta} \cdot y^{\delta} </span></p>
-<p> <span class='math'> u(\delta, \alpha, \beta, x, y) = u(\delta, \alpha, x) + u(\delta, \beta, y) </span></p>
-
-<p> first: <span class='math'>\alpha, \beta, x, y \gt 0 </span> </p>
-<p> you could consider the case where any of them are equal to 0, but then you could just remove the term </p>
-
-<p> if <span class='math'>\delta \lt 0 </span> then :</p>
-<ul>
-  <li><p><span class='math'> \dfrac{\alpha}{\delta} \cdot x^{\delta} \lt 0 </span></p>
-  <li><p><span class='math'> \dfrac{\beta}{\delta} \cdot y^{\delta} \lt 0 </span></p>
-  <li><p>therefore <span class='math'> u \lt 0 </span></p>
-</ul>
-
-<p> that is interesting. if you have numbers, a, b, c &gt; 0, and c = a + b, then a, b &lt; c </p>
-<p> a + b = c, a = c - b, a &gt; 0, c - b &gt; 0, c &gt; b and the same for a</p>
-
-<p> in this case, it's the reverse. so both <span class='math'> u(\delta, \alpha, x), u(\delta, \beta, y) \lt u </span></p>
-
-<p> so that means that when <span class='math'> \delta \lt 0 </span> there is actually a lower limit on x and y </p>
-
-<ul>
- <li><p><span class='math'> \dfrac{\alpha}{\delta} \cdot x^{\delta} \lt u </span></p>
- <li><p><span class='math'> \dfrac{\beta}{\delta} \cdot y^{\delta} \lt u </span></p>
-</ul>
-
-<p> <span class='math'> x_{min} = \big ( \dfrac{\delta}{\alpha} \cdot u \big ) ^{\frac{1}{\delta}} </span></p>
-<p> <span class='math'> y_{min} = \big( \dfrac{\delta}{\beta} \cdot u \big ) ^{\frac{1}{\delta}} </span></p>
-
-<h4> it is relevant </h4>
-<p> I wouldn't have figured this out if I hadn't worked on animating it. The mechanism I was using to graph it was producing weird results, so I had to examine this really closely. </p>
-
-<p> as long as i follow this, I can use <span class='math'> y = \Big ( \dfrac{\delta}{\beta} \cdot u - \dfrac{\alpha}{\beta} \cdot x ^{\delta}  \Big ) ^{\frac{1}{\delta}} </span>
-
-<p> remember not to assume here in consumer theory that alpha + beta = 1 </p>
-
-</div>
 
 </div>
 
