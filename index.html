@@ -15,8 +15,11 @@
   
   <script src="./katex/katex.min.js"></script>
   <link rel="stylesheet" href="./katex/katex.min.css" >
-  <script src="./setup.js"></script>
 
+  <script src="./setup.js"></script>
+  <script src="./setup_indifference_curve.js"></script>
+  <script src="./setup_utility_vs_delta.js"></script>
+  <script src="./setup_marshallian_demand.js"></script>
 </head>
 
 <body>
@@ -44,9 +47,9 @@
   <div class='box'>
 
   <table class='mytable'>
-    <tr><td><span class='math'>\delta</span> : delta </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
-    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha' /></td></tr>
-    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta' /></td></tr>
+    <tr><td><span class='math'>\delta</span> : delta </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td></tr>
+    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
+    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
   </table>
 
 
@@ -158,86 +161,30 @@
     <p><span class='math'> L = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } + \lambda \cdot \big ( M - p_x \cdot x - p_y \cdot y \big ) </span></p>
     <p> taking for granted that theyre equality constraint <p>
     
-    <p><span class='math'> L_x = \dfrac{1}{\delta} \cdot \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ {\dfrac{1}{\delta} - 1} \cdot \delta \cdot \alpha \cdot x ^ {\delta - 1} - \lambda p_x = 0 </span></p>
-    <p><span class='math'> L_x = u ^ {1-\delta} \cdot \alpha \cdot x^{\delta - 1} - \lambda \cdot p_x = 0 </span></p>
+    <p><span class='math'> L_x = \dfrac{1}{\delta} \cdot \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ {\frac{1}{\delta} - 1} \cdot \delta \cdot \alpha \cdot x ^ {\delta - 1} - \lambda \cdot p_x = u ^ {1-\delta} \cdot \alpha \cdot x^{\delta - 1} - \lambda \cdot p_x = 0 </span></p>
     
+    <p><span class='math'> L_y = \dfrac{1}{\delta} \cdot \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ {\frac{1}{\delta} - 1} \cdot \delta \cdot \beta \cdot y ^ {\delta - 1} - \lambda \cdot p_y = u ^ {1-\delta} \cdot \beta \cdot x^{\delta - 1} - \lambda \cdot p_y = 0 </span></p>
+
+    <p><span class='math'> L_{\lambda} = M - p_x \cdot x - p_y \cdot y </span></p>
+
     <p> equating <span class='math'>L_x</span> and <span class='math'>L_y</span> on <span class='math'>\lambda</span> : </p>
-    <p><span class='math'>  \bigg ( \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} \bigg ) ^ {\frac{1}{\delta - 1}} = \dfrac{y}{x} </span></p> 
+    <p><span class='math'>  \dfrac{y}{x} = \bigg ( \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} \bigg ) ^ {\frac{1}{\delta - 1}} = A^B </span> where <span class='math'> A = \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} </span> and <span class='math'> B = {\frac{1}{\delta - 1}} </span></p>
+
+    <p> Thats the expansion path. Sub it into the budget constraint. </p>
+    <p><span class='math'> x = \dfrac{M}{p_x + p_y \cdot A ^ B} </span></p>
+    <p><span class='math'> y = \dfrac{M}{p_x \cdot A ^ {-B} + p_y} </span></p>
     
-    <h4> Allocation expansion path </h4>
-    
-    <p><span class='math'> A = \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} </span></p>
-    <p><span class='math'> B = {\frac{1}{\delta - 1}} </span></p>
-    <p><span class='math'>  y = x \cdot C </span></p>
-    <p> A contains all of the parameters that relate price-preference between x and y. </p>
-    <p> if A = 1, then it doesnt matter. x = y </p>
-    <p> But if A != 1, then delta matters </p>
-    <p> When delta is very negative, B is close to 0, and negative. </p>
-    <p> When delta is close to 1 from the left, B is very large and very negative </p>
+
     <table class='mytable'>
-      <tr><td>delta</td><td>B</td><td>C</td><td>result</td></tr>
-      <tr><td>very small</td><td>0, negative</td><td>B^0 = 1</td><td>y=x : A doesnt matter at all </td></tr>
-      <tr><td>0</td><td>B = -1</td><td>B^{-1} = 1/B</td><td>C = A. Maybe this is neutral </td></tr>
-      <tr><td>close to 1</td><td>-infin</td><td>B^{-infin} = 0</td><td>A matters a lot</td></tr>
+      <tr><td><p><span class='math'>\delta</span> : delta </p></td><td>B</td><td><span class='math'>A^B</span></td><td>result</td></tr>
+      <tr><td><p><span class='math'>-\infin</span></p></td><td>0, negative</td><td>B^0 = 1</td><td>y=x : A doesnt matter at all </td></tr>
+      <tr><td><p><span class='math'>0</span></p></td><td>B = -1</td><td>B^{-1} = 1/B</td><td>C = A. Maybe this is neutral </td></tr>
+      <tr><td><p><span class='math'>1</span></p></td><td>-infin</td><td>B^{-infin} = 0</td><td>A matters a lot</td></tr>
     </table>
-    <div id='container_expansion_path'></div>
-  </div>
-  
-  <script>
-  
-  (function() {
     
-    let b, c;
-    let A = 1;
-    window.addEventListener('load', function() {
-      b = new Box();
-      c = b.RETURN_CANVAS();
-      container_expansion_path.appendChild(c);
-
-      b.CANVAS_SIZE(500, 500);     // this is the number of pixels 
-      b.RANGE_X(-5, 1);           // set the range in x 
-      b.RANGE_Y(-5, 11);           // set the range in y 
-
-      b.CLEAR_CANVAS();
-
-      // DRAW AN X-Y GRID 
-      b.LINE_WIDTH(1);
-      b.STROKE_STYLE('#ddd');
-      b.SHOW_GRID_X();
-      b.SHOW_GRID_Y();
-
-      b.LINE_WIDTH(2);
-      b.STROKE_STYLE('#999');
-      b.SHOW_AXES();
-      
-      let A = 1.5;
-      let B = [];
-      let C = [];
-
-      let x_min = b.data.range.x.min;
-      let x_max = b.data.range.x.max;
-      let dx = 0.01;
-      let index = 0;
-      for (let x = x_min; x < x_max; x += dx) {
-        B[index] = {'x':x,'y':1/(x-1)};
-        C[index] = {'x':x,'y':A**B[index].y};
-        index++;
-      }
-
-      b.LINE_WIDTH(1);
-      b.STROKE_STYLE('#fc0a');
-      b.CONNECT_VALUES(B);
-      
-      b.LINE_WIDTH(1);
-      b.STROKE_STYLE('#5d5d');
-      b.CONNECT_VALUES(C);
-
-      
-    });
-  })();
-  
-  </script>
-  
+    <!-- <div id='container_expansion_path'></div> -->
+    
+  </div>
 
 </div>
 
@@ -247,14 +194,11 @@
 
   <div class='box'>
   <table class='mytable'>
-    <!--
-    <tr><td> delta, <span class='math'>\delta</span> </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
-    <tr><td> alpha, <span class='math'>\alpha</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_alpha' /></td></tr>
-    <tr><td> beta, <span class='math'>\beta</span> </td><td><input class='myinputs' type='number' value=0.50 step=0.01 id='myinput_beta' /></td></tr>
-    -->
-    <tr><td> px, <span class='math'>p_x</span> </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_px' /></td></tr>
-    <tr><td> py, <span class='math'>p_y</span> </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_py' /></td></tr>
-    <tr><td> budget, <span class='math'>M</span> </td><td><input class='myinputs' type='number' value=100 step=1 id='myinput_budget' /></td></tr>
+    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_alpha_uvd' /></td></tr>
+    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_beta_uvd' /></td></tr>
+    <tr><td><span class='math'>p_x</span> : price of x </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_px_uvd' /></td></tr>
+    <tr><td><span class='math'>p_y</span> : price of y </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_py_uvd' /></td></tr>
+    <tr><td><span class='math'>M</span> : budget </td><td><input class='myinputs' type='number' value=100 step=1 id='myinput_budget_uvd' /></td></tr>
   </table>
   </div>
   
