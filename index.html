@@ -27,9 +27,9 @@
 
 </div>
 
-<div class='section border'>
+<div class='section margin padding border'>
 
-  <div class='section'>
+  <div class='section margin padding'>
     <h4> ces utility </h4>
     <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></p>
   </div>
@@ -37,14 +37,14 @@
 </div>
 
 
-<div class='section border'>
+<div class='section margin padding border'>
 
-  <div class='section'>
+  <div class='section margin padding'>
     <h4> the indifference curve </h4>
     <p> i just picked a point at random, like <span class='inline-code'>(5.5,4.7)</span>. then given delta, alpha, beta, solved for u. then used u to plot the idc </p>
   </div>
  
-  <div class='box'>
+  <div class='box margin padding'>
 
   <table class='mytable'>
     <tr><td><span class='math'>\delta</span> : delta </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td></tr>
@@ -77,17 +77,17 @@
 
   </div>
 
-  <div class='box' id='container_indifference_curve'></div>
+  <div class='box margin padding' id='container_indifference_curve'></div>
 
 </div> <!-- closing bordered section -->
 
-<div class='section border'>
+<div class='section margin padding border'>
 
-  <div class='section'>
+  <div class='section margin padding'>
     <h4> its form </h4>
   </div>
   
-  <div class='box'>
+  <div class='box margin padding'>
   
   <table class='mytable'>
     <tr>
@@ -152,9 +152,9 @@
 
 
 
-<div class='section border'>
+<div class='section margin padding border'>
 
-  <div class='section'>
+  <div class='section margin padding'>
     <h4> marshallian demand </h4>
     <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></p>
     
@@ -168,7 +168,7 @@
     <p><span class='math'> L_{\lambda} = M - p_x \cdot x - p_y \cdot y </span></p>
 
     <p> equating <span class='math'>L_x</span> and <span class='math'>L_y</span> on <span class='math'>\lambda</span> : </p>
-    <p><span class='math'>  \dfrac{y}{x} = \bigg ( \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} \bigg ) ^ {\frac{1}{\delta - 1}} = A^B </span> where <span class='math'> A = \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} </span> and <span class='math'> B = {\frac{1}{\delta - 1}} </span></p>
+    <p><span class='math'>  \dfrac{y}{x} = \bigg ( \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} \bigg ) ^ {\frac{1}{\delta - 1}} = A^B </span> where <span class='math'> A = \frac{p_y}{p_x} \cdot \frac{\alpha}{\beta} </span> and <span class='math'> B = {\frac{1}{\delta - 1}} </span></p>
 
     <p> Thats the expansion path. Sub it into the budget constraint. </p>
     <p><span class='math'> x = \dfrac{M}{p_x + p_y \cdot A ^ B} </span></p>
@@ -176,7 +176,7 @@
     
 
     <table class='mytable'>
-      <tr><td><p><span class='math'>\delta</span> : delta </p></td><td>B</td><td><span class='math'>A^B</span></td><td>result</td></tr>
+      <tr><td><p><span class='math'>\delta</span> : delta </p></td><td><span class='math'>B = \frac{1}{\delta-1}</span></td><td><span class='math'>A^B</span></td><td>result</td></tr>
       <tr><td><p><span class='math'>-\infin</span></p></td><td>0, negative</td><td>B^0 = 1</td><td>y=x : A doesnt matter at all </td></tr>
       <tr><td><p><span class='math'>0</span></p></td><td>B = -1</td><td>B^{-1} = 1/B</td><td>C = A. Maybe this is neutral </td></tr>
       <tr><td><p><span class='math'>1</span></p></td><td>-infin</td><td>B^{-infin} = 0</td><td>A matters a lot</td></tr>
@@ -188,24 +188,56 @@
 
 </div>
 
-<div class='section border'>
+<div class='section margin padding border'>
 
-  <div class='section'><h4> utility & the marshallian allocation vs delta </h4></div>
+  <div class='section margin padding'><h4> utility & the marshallian allocation vs delta </h4></div>
 
-  <div class='box'>
+  <div class='box margin padding'>
   <table class='mytable'>
-    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_alpha_uvd' /></td></tr>
-    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_beta_uvd' /></td></tr>
-    <tr><td><span class='math'>p_x</span> : price of x </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_px_uvd' /></td></tr>
-    <tr><td><span class='math'>p_y</span> : price of y </td><td><input class='myinputs' type='number' value=1 step=0.1 id='myinput_py_uvd' /></td></tr>
-    <tr><td><span class='math'>M</span> : budget </td><td><input class='myinputs' type='number' value=100 step=1 id='myinput_budget_uvd' /></td></tr>
+    <tr><td><span class='math'>\delta</span> : delta </td><td><input class='myinputs' type='number' value="-1.92" step=0.01 id='myinput_delta_uvd' /></td></tr>
+    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.7 step=0.01 id='myinput_alpha_uvd' /></td></tr>
+    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=0.4 step=0.01 id='myinput_beta_uvd' /></td></tr>
+    <tr><td><span class='math'>p_x</span> : price of x </td><td><input class='myinputs' type='number' value=1 step=0.01 id='myinput_px_uvd' /></td></tr>
+    <tr><td><span class='math'>p_y</span> : price of y </td><td><input class='myinputs' type='number' value=1.2 step=0.01 id='myinput_py_uvd' /></td></tr>
+    <tr><td><span class='math'>M</span> : budget </td><td><input class='myinputs' type='number' value=10 step=1 id='myinput_budget_uvd' /></td></tr>
+    <tr><td><span class='math'>A = \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} </span></td><td class='myoutputs'><span id='myoutput_A_uvd'></span></td></tr>
+    <tr><td><span class='math'>B = \dfrac{1}{\delta - 1} </span></td><td class='myoutputs'><span id='myoutput_B_uvd'></span></td></tr>
+    <tr><td><span class='math'>C = A^{B} </span></td><td class='myoutputs'><span id='myoutput_C_uvd'></span></td></tr>
+    
+    <!-- <tr><td></td><td></td></tr> -->
   </table>
   </div>
   
+  <div class='box margin padding'>
+  
+  <div class='section'>
+  
   <div class='box' id='container_utility_vs_delta'></div>
 
-  <div class='box' id='container_allocation_vs_delta'></div>
-
+  <div class='box margin padding' style='vertical-align: middle;'>
+        <table class='untable'>
+          <tr><td><div> utility </div></td>
+              <td><div style='display: inline-block; vertical-align: middle; margin: 1vh; width: 50px;'>
+                <div class='' style='border-bottom: 3px solid #fc0a;'></div>
+                <div class=''></div>
+              </div></td></tr>
+          <tr><td><div> x </div></td>
+              <td><div style='display: inline-block; vertical-align: middle; margin: 1vh; width: 50px;'>
+                <div class='' style='border-bottom: 3px solid #c2d1f0;'></div>
+                <div class=''></div>
+              </div></td></tr>
+          <tr><td><div> y </div></td>
+              <td><div style='display: inline-block; vertical-align: middle; margin: 1vh; width: 50px;'>
+                <div class='' style='border-bottom: 3px solid #b3cccc;'></div>
+                <div class=''></div>
+              </div></td></tr>
+        </table>
+  </div>
+  
+  
+  </div>
+  
+  </div>
 
 </div>
 

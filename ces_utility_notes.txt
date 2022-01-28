@@ -7,12 +7,14 @@
 
 ** ces utility : marshallian demand notes + expansion_path
 
-** ces utility : plot of utility against delta, for given px, py, alpha, beta, M
-
-** ces utility : marshallian-x-y allocation v delta
 
 
 
 ** draw x_critical [domain and range]
+** expansion_path
 
-** solve marshallian demand
+
+
+
+** solve marshallian demand : log : should i use cobb-douglas or log form ?
+** does it get to min(ax,by) at -infin? really? slowly?

@@ -21,7 +21,12 @@ Box.prototype.GET_CES_MARSHALLIAN_ALLOCATION = function(obj) {
   let px = obj.px;
   let py = obj.py;
   let budget = obj.budget;
-
+  
+  let A = (alpha * py) / (beta * px);
+  let B = (1 / (delta - 1));
+  let C = A**B;
+  let C_INV = 1/ C;
+  
   let x = null;
   let y = null;
   let u = null;
@@ -32,7 +37,10 @@ Box.prototype.GET_CES_MARSHALLIAN_ALLOCATION = function(obj) {
     'beta':beta,
     'px':px,
     'py':py,
-    'budget':budget
+    'budget':budget,
+    'A':A,
+    'B':B,
+    'C':C
   }
   
   // SET THE TYPE
@@ -71,6 +79,8 @@ Box.prototype.GET_CES_MARSHALLIAN_ALLOCATION = function(obj) {
     y = beta/(alpha + beta) * budget / py;
     u = x**alpha*y**beta;
     
+    // i should find a way to add both log utilities, because sometimes we use cobb douglas, other times the log version
+    
     output.expenditure = px*x + py*y; 
     output.u = u;
     output.x = x;
@@ -93,11 +103,6 @@ Box.prototype.GET_CES_MARSHALLIAN_ALLOCATION = function(obj) {
   
 
   // GENERAL CES : THE ELSE CASE
-  let A = (alpha * py) / (beta * px);
-  let B = (1 / (delta - 1));
-  let C = A**B;
-  let C_INV = 1/ C;
-  
   x = budget / (px + py * C);
   y = budget / (px * C_INV + py);
   u = (alpha * x ** delta + beta * y ** delta)**delta_inv;
