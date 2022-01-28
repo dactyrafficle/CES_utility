@@ -33,3 +33,13 @@ html, body {
 pre {
   padding: 1vh;
 }
+
+.abc {
+  font-family: monospace;
+  padding: 1vh;
+}
+.inline-code {
+  font-family: monospace;
+  padding: 3px;
+  background-color: #eee;
+}

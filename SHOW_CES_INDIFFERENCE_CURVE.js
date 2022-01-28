@@ -48,9 +48,6 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
     'u':null,
     'x':null,            
     'y':null,
-    'budget':null,
-    'px':null,
-    'py':null,
     'type':null
   }
 
@@ -73,6 +70,10 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
   if (delta === 0) {output.type = "LOG"}
   if (delta < -100) {output.type = "LEONTIEFF"}
 
+  output.alpha = alpha;
+  output.beta = beta;
+
+
 
   // FIRST CASE :
   if (obj.u) {
@@ -83,6 +84,9 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
   if (!obj.u && (obj.x && obj.y)) {
     x = obj.x;
     y = obj.y;
+    
+    output.x = x;
+    output.y = y;
     
     if (output.type === "LINEAR") {u = alpha*x + beta*y};
     if (output.type === "LOG") {u = x**alpha*y**beta};
@@ -158,13 +162,6 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
   
   let x_index = 0, y_index = 0;
   let arr = [];
-
-  // RELEVANT IF delta < 0
-  let x_min = u/alpha**delta; //((delta/alpha)*u)**delta_inv; ************************************
-  let y_min = u/beta**delta; // ((delta/beta)*u)**delta_inv;
-
-  output.x_min = x_min;
-  output.y_min = y_min;
 
   for (let i = 0; i <= 50; i++) {
   

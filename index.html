@@ -41,51 +41,42 @@
     <p> i just picked a point at random, like <span class='inline-code'>(5.5,4.7)</span>. then given delta, alpha, beta, solved for u. then used u to plot the idc </p>
   </div>
  
-
- 
-<div class='section'>
-
-<div class='box'>
-
-  <!-- 0.01, 0.70, 0.40 -->
+  <div class='box'>
 
   <table class='mytable'>
-    <tr><td> delta, <span class='math'>\delta</span> </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
-    <tr><td> alpha, <span class='math'>\alpha</span> </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha' /></td></tr>
-    <tr><td> beta, <span class='math'>\beta</span> </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta' /></td></tr>
+    <tr><td><span class='math'>\delta</span> : delta </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta' /></td></tr>
+    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha' /></td></tr>
+    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta' /></td></tr>
   </table>
 
-<pre>
 
- <span class='comment'>// IF u ISNT SUPPLIED, ITS CALCULATED </span>
- 
- b.LINE_WIDTH(2);
- b.STROKE_STYLE('#fc0a');
- b.SHOW_CES_INDIFFERENCE_CURVE({
-  'delta':delta,     <span class='comment'>// REQUIRED </span>
-  'alpha':alpha,     <span class='comment'>// REQUIRED </span>
-  'beta':beta,       <span class='comment'>// REQUIRED </span>
-  'u':null,
-  'x':5.5,
-  'y':4.7
- });
- 
- b.FILL_STYLE('#fc0a');
- b.RADIUS(2);
- b.SHOW_VALUE(obj);
+  <pre>
+   
+  let obj = {
+   'delta':delta,
+   'alpha':alpha,  
+   'beta':beta,
+   'u':null,
+   'x':5.5,
+   'y':4.7
+  }
+  
+  b.LINE_WIDTH(2);
+  b.STROKE_STYLE('#fc0a');
+  b.SHOW_CES_INDIFFERENCE_CURVE(obj);
+   
+  b.FILL_STYLE('#fc0a');
+  b.RADIUS(2);
+  b.SHOW_VALUE(obj);
 
-</pre>
- 
-</div>
+  </pre>
 
-<div class='box' id='container_indifference_curve'></div>
 
-<p> the leontieff is weird, is it u=min(x,y) or u=min(x/alpha,y/beta) ?? </p>
-<p> my graph makes it look like u=min(x,y) </p>
+  </div>
 
-</div>
+  <div class='box' id='container_indifference_curve'></div>
 
-</div>
+</div> <!-- closing bordered section -->
 
 <div class='section border'>
 
@@ -111,7 +102,7 @@
       <td><span class='math'> \delta = 1 </span></td>
       <td><p> sub <span class='inline-code'>&delta; = 1</span> into <span class='inline-code'>u</span> </p></td>
       <td><span class='math'> u = \alpha x + \beta y </span></td>
-      <td><p> just rearrange u </p></td>
+      <td><p> just rearrange </p></td>
       <td><p><span class='math'> y = \frac{1}{\beta} \cdot (u - \alpha \cdot x) </span></p>
           <p><span class='math'> y_{int} = \big ( 0, \frac{u}{\beta} \big ) </span></p>
           <p><span class='math'> x_{int} = \big ( \frac{u}{\alpha}, 0 \big )  </span></p></td>
@@ -123,7 +114,7 @@
       <td><p> theres a tricky limit </p></td>
       <td><p><span class='math'> u = \alpha \ln x + \beta \ln y </span></p>
           <p><span class='math'> u = x^{\alpha} \cdot y^{\beta} </span></p>
-      <td></td>
+      <td><p> just rearrange </p></td>
       <td><p><span class='math'> \cdot </span></p>
           <p><span class='math'> y = \bigg ( \dfrac{u}{x^{\alpha}} \bigg ) ^ {\frac{1}{\beta}} </span></p></td>
     </tr>
@@ -132,7 +123,9 @@
       <td><p> Leontieff </p></td>
       <td><span class='math'> \delta = -\infin </span></td>
       <td><p> theres a tricky limit </p></td>
-      <td> ** <span class='math'> u = \min(x,y) </span></td>
+      <td><p> ** <span class='math'> u = \min(x,y) </span></p></td>
+      <td><p> ** </p></td>
+      <td><p> **</p></td>
     </tr>
     
     <tr>
@@ -141,7 +134,7 @@
           <p><span class='math'> -\infin \lt \delta \lt 0 </span></p></td>
       <td><p> nothing </p></td>
       <td><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></td>
-      <td><p> just rearrange u </p></td>
+      <td><p> just rearrange </p></td>
       <td>
         <p><span class='math'> y = \Big ( \dfrac{u^{\delta} - \alpha \cdot x^{\delta}}{\beta} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \gt \alpha \cdot x^{\delta}</span></p>
         <p><span class='math'> x = \Big ( \dfrac{u^{\delta} - \beta \cdot x^{\delta}}{\alpha} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \gt \beta \cdot y^{\delta}</span></p>

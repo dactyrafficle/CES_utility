@@ -100,6 +100,9 @@ function UPDATE_OBJ(obj, myinput_delta, myinput_alpha, myinput_beta) {
   if (delta > 1) {
     delta = 1;
   }
+  if (delta < -100) {
+    delta = -100;
+  }
   if (alpha > 12) {
     alpha = 12;
   }
