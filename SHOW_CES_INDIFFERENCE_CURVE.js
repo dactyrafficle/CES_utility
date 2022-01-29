@@ -48,7 +48,8 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
     'u':null,
     'x':null,            
     'y':null,
-    'type':null
+    'type':null,
+    'procedure':null
   }
 
   let alpha, alpha_inv, beta, beta_inv, delta, delta_inv;
@@ -77,11 +78,15 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
 
   // FIRST CASE :
   if (obj.u) {
+    output.procedure = 'FIRST : UTILITY SUPPLIED';
     u = obj.u;
+    output.u = u;
   }
 
   // SECOND CASE : u = u(x, y)
   if (!obj.u && (obj.x && obj.y)) {
+    output.procedure = 'SECOND : UTILITY CALCULATED';
+
     x = obj.x;
     y = obj.y;
     
@@ -96,22 +101,7 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
     output.u = u;
   }
 
-  /*
-  // THIRD CASE : u = u(budget, px, py)
-  let budget, px, py;
-  if (!obj.u && (!obj.x && !obj.y) && (obj.budget && obj.px && obj.py)) {
-    // console.log('CASE 3');
-    budget = obj.budget;
-    px = obj.px;
-    py = obj.py;
-    x = alpha*budget/px;
-    y = beta*budget/py;
-    u = x**alpha*y**beta;
-  }
-  */
-  
-    
- 
+
   // LINEAR
   if (output.type === "LINEAR") {
     this.CONNECT_VALUES([{'x':0,'y':u/beta},{'x':u/alpha,'y':0}]);
@@ -165,21 +155,14 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
 
   for (let i = 0; i <= 50; i++) {
   
-    // THE ELSE CASES
-    if (u**delta > alpha*x_index**delta) {
+    // THE ELSE CASES **
+    if (u**delta >= alpha*x_index**delta) {
       arr.push({
         'x':x_index,
         'y':((u**delta - alpha*x_index**delta)/beta)**delta_inv
       });
-      
-      // this.FILL_STYLE('#5d5d');
-      // this.RADIUS(3);
-      // this.SHOW_VALUE({'x':x_index,'y':((u**delta - alpha*x_index**delta)/beta)**delta_inv});
-      
-      
     }
-
-    if (u**delta > beta*y_index**delta) {
+    if (u**delta >= beta*y_index**delta) {
       arr.push({
         'x':((u**delta - beta*y_index**delta)/alpha)**delta_inv,
         'y':y_index
@@ -191,7 +174,12 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
     
   } // closing for loop
 
+  // ** WE USE X AND Y TO GET U
+  // WHEN WE LOOP OVER X, WE TRY TO FIND THE Y THAT MAKES THAT U POSSIBLE
+  // BUT WHEN DELTA < 0, THERE MAY NOT EXIST SUCH A Y
+  // AND IF WE DONT ACCOUNT FOR THAT, WELL GET WACKY VALUES PLOTTED ON THE GRAPH
   
+  // WHEN 0 < DELTA < 1, WE CAN FIND AN X OR Y TO MEET U GIVEN AND OTHER Y OR X, RESPECTIVELY 
 
   // SORT ARR : IF it's almost leontieff, ie. delta = -140, then i need to sort by x, from lowest to smallest
   // then if 2 points have the same x, from largest to smallest

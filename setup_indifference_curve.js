@@ -6,6 +6,7 @@
     'delta':null,
     'alpha':null,  
     'beta':null,
+    'u':null,
     'x':5.5,
     'y':4.7
   }
@@ -72,6 +73,32 @@
     b.FILL_STYLE('#fc0a');
     b.RADIUS(2);
     b.SHOW_VALUE(obj);
+    
+    // THE DOMAIN AND RANGE
+    b.LINE_WIDTH(1);
+    b.STROKE_STYLE('#999');
+    
+    // SHOW THE DOMAIN AND RANGE
+    let x_c = (a.u**a.delta / a.alpha)**(1/a.delta);
+    b.CONNECT_VALUES([
+      {'x':x_c,'y':b.data.range.y.min},
+      {'x':x_c,'y':b.data.range.y.max}
+    ]);
+    let y_c = (a.u**a.delta / a.beta)**(1/a.delta);
+    b.CONNECT_VALUES([
+      {'x':b.data.range.x.min,'y':y_c},
+      {'x':b.data.range.x.max,'y':y_c}
+    ]);
+    
+    b.FILL_STYLE('#999');
+    b.RADIUS(1);
+    b.SHOW_VALUE({
+      'x':x_c,
+      'y':y_c
+    });
+    
+    
+
 
   }
 

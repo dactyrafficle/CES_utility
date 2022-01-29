@@ -1,13 +1,19 @@
 
 
+
+ * LEONTIEFF : where does min(ax,by) come from?
+ * SOLVE marshallian demand : log : should i use cobb-douglas or log form ? 
+ * GET_CES_MARSHALLIAN_ALLOCATION() 
+    
+    
+    
+    
 ** transformations : standard form to the form ive been working with
-    LEONTIEFF : where does min(ax,by) come from?
-    GET_CES_MARSHALLIAN_ALLOCATION
+
+    
     SHOW_CES_INDIFFERENCE_CURVE
 
 ** ces utility : marshallian demand notes + expansion_path
-
-
 
 
 ** draw x_critical [domain and range]
@@ -16,5 +22,9 @@
 
 
 
-** solve marshallian demand : log : should i use cobb-douglas or log form ?
-** does it get to min(ax,by) at -infin? really? slowly?
+<p> linear : price is maximally relevant </p>
+
+<h4> leontieff </h4>
+<p> with Leontieff, your preferences are so rigid, that even tho alpha/px &gt; beta/py, the only thing that matters is alpha and beta. price does not factor into the decision. if prices change, you can buy less, but your ratio of x-y does not change. </p>
+<p> prices will determine the size of the bundle, but not the ratio of goods x-y </p>
+<p> price will not induce you to buy more x at the expense of y, and vise versa. so price is irrelevant </p>

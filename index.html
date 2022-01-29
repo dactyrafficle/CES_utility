@@ -78,6 +78,23 @@
   </div>
 
   <div class='box margin padding' id='container_indifference_curve'></div>
+  
+  <div class='section margin padding'>
+    <p> a comment on graphing. i start with an x and y, and calculate u. i loop over x, and using u, i determine y. i have to include some criteria to make sure that such a y exists. for something approaching leontieff, the range gets restricted. so if I have a u, there are some values of x that don't work. and if i'm looping over that range, if im not careful, ill get wacky points all over the graph. same for y, just inversed. </p>
+    <p> in this case, it's the following 2 lines, which are already a part of my function <span class='inline-code'>SHOW_CES_INDIFFERENCE_CURVE()</span>, but its not something i thot of before i tried graphing it so probably just something to keep in mind. </p>
+    <p> if <span class='math'>\delta \lt 0 </span>, this is definitely true. that is, for any u and x both gt 0, there isnt always a y that works. or for any pair of u and y, there isnt always an x that works. </p>
+    <p> if <span class='math'> 0 \lt \delta \lt 1 </span>, im not sure. the idea is that, for any combination of u and x both gt 0, there is always a y that works. i'm not sure. </p>
+    <p> u gt 0 because we always use a real x and y to produce it, so its values will follow the eqn </p>
+
+  <pre>
+  <span class='comment'>// looping over x</span>
+  u**delta >= alpha*x_index**delta
+
+  <span class='comment'>// looping over y</span>
+  u**delta >= beta*y_index**delta
+  </pre>
+  </div>
+  
 
 </div> <!-- closing bordered section -->
 
@@ -139,8 +156,8 @@
       <td><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></td>
       <td><p> just rearrange </p></td>
       <td>
-        <p><span class='math'> y = \Big ( \dfrac{u^{\delta} - \alpha \cdot x^{\delta}}{\beta} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \gt \alpha \cdot x^{\delta}</span></p>
-        <p><span class='math'> x = \Big ( \dfrac{u^{\delta} - \beta \cdot x^{\delta}}{\alpha} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \gt \beta \cdot y^{\delta}</span></p>
+        <p><span class='math'> y = \Big ( \dfrac{u^{\delta} - \alpha \cdot x^{\delta}}{\beta} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \ge \alpha \cdot x^{\delta}</span></p>
+        <p><span class='math'> x = \Big ( \dfrac{u^{\delta} - \beta \cdot x^{\delta}}{\alpha} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \ge \beta \cdot y^{\delta}</span></p>
       </td>
     </tr>
   </table>
