@@ -5,7 +5,11 @@
  * SOLVE marshallian demand : log : should i use cobb-douglas or log form ? 
  * GET_CES_MARSHALLIAN_ALLOCATION() 
     
-    
+    ** expansion path
+** minimum value of x and y for a given u as we approach leontieff
+
+
+** add both utilities
     
     
 ** transformations : standard form to the form ive been working with
@@ -16,7 +20,7 @@
 ** ces utility : marshallian demand notes + expansion_path
 
 
-** draw x_critical [domain and range]
+
 ** expansion_path
 
 

@@ -49,7 +49,9 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
     'x':null,            
     'y':null,
     'type':null,
-    'procedure':null
+    'procedure':null,
+    'x_c':null,
+    'y_c':null
   }
 
   let alpha, alpha_inv, beta, beta_inv, delta, delta_inv;
@@ -101,6 +103,14 @@ Box.prototype.SHOW_CES_INDIFFERENCE_CURVE = function(obj) {
     output.u = u;
   }
 
+  // THE DOMAIN AND RANGE
+  output.x_c = null;
+  output.y_c = null;
+  if (delta !== 0) {
+    output.x_c = (u**delta / alpha)**(1/delta);
+    output.y_c = (u**delta / beta)**(1/delta);
+  }
+  
 
   // LINEAR
   if (output.type === "LINEAR") {
