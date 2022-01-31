@@ -1,4 +1,6 @@
 
+// interesting when alpha + beta = 1, the orange line is continuous
+
 (function() {
 
   let myinput_delta, myinput_alpha, myinput_beta, myinput_px, myinput_py, myinput_budget;
@@ -77,32 +79,12 @@
 
     b.CLEAR_CANVAS();
 
-    /*
     // RESET THE RANGE
-    let linear_allocation = b.GET_CES_MARSHALLIAN_ALLOCATION({
-      'delta':1,
-      'alpha':obj.alpha,
-      'beta':obj.beta,
-      'px':obj.px,
-      'py':obj.py,
-      'budget':obj.budget
-    });
-    
-    let y_max = (function() {
-      
-      let a = obj.budget / obj.px;
-      let b = obj.budget / obj.py;
-      
-      if (linear_allocation.x > linear_allocation.y) {
-        return linear_allocation.x;
-      } else {
-        return linear_allocation.y;
-      }
-      
-    })();
-    if (y_max < 5) {y_max = 5}
-    b.RANGE_Y(-1, y_max);
-    */
+    if (obj.px > obj.py) {
+      b.RANGE_Y(-1, obj.budget/obj.py * 1.1);
+    } else {
+      b.RANGE_Y(-1, obj.budget/obj.px * 1.1);
+    }
 
     // THE GRID
     b.LINE_WIDTH(1);
@@ -141,10 +123,10 @@
     b.SHOW_VALUE({'x':obj.delta,'y':current_allocation.u});
     
     
-    b.FILL_STYLE('#cdea');
+    b.FILL_STYLE('#28fa');
     b.SHOW_VALUE({'x':obj.delta,'y':current_allocation.x});
 
-    b.FILL_STYLE('#bcca');
+    b.FILL_STYLE('#6c9a');
     b.SHOW_VALUE({'x':obj.delta,'y':current_allocation.y});
     
     let x_scale = 100;
@@ -201,10 +183,10 @@
     
     b.LINE_WIDTH(2);
 
-    b.STROKE_STYLE('#cdea');
+    b.STROKE_STYLE('#28fa');
     b.CONNECT_VALUES(x_arr[0]);
     
-    b.STROKE_STYLE('#bcc7');
+    b.STROKE_STYLE('#6c9a');
     b.CONNECT_VALUES(y_arr[0]);
     
     b.STROKE_STYLE('#fc07');
