@@ -167,9 +167,17 @@
         });
       }
       if (delta === 0) {
+        
+        // COBB DOUGLAS
         u_arr[1].push({
           'x':allocation.delta,
           'y':allocation.u
+        });
+        
+        // LOG
+        u_arr[1].push({
+          'x':allocation.delta,
+          'y':allocation.alpha * Math.log(allocation.x) + allocation.beta * Math.log(allocation.y)
         });
       }
       if (delta > 0) {
@@ -194,7 +202,8 @@
     
     b.FILL_STYLE('#fc0a');
     b.RADIUS(2);
-    b.SHOW_VALUE(u_arr[1][0]);
+    b.SHOW_VALUE(u_arr[1][0]); // COBB DOUGLAS : I DONT THINK THEY ARE EVER EQUAL. the cobb douglas is good. but the log version. that's just a transformation
+    // b.SHOW_VALUE(u_arr[1][1]); // LOG
     
     b.CONNECT_VALUES(u_arr[2]);
 
