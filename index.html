@@ -8,10 +8,8 @@
   <link rel="icon" href="a.png">
   <script src="./a.js"></script>
   
-  
   <script src='Box.js'></script>
-  <script src='SHOW_CES_INDIFFERENCE_CURVE.js'></script>
-  <script src='GET_CES_MARSHALLIAN_ALLOCATION.js'></script>
+
   
   <script src="./katex/katex.min.js"></script>
   <link rel="stylesheet" href="./katex/katex.min.css" >
@@ -30,10 +28,51 @@
 <div class='section margin padding border'>
 
   <div class='section margin padding'>
-    <h4> ces utility </h4>
-    <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></p>
-  </div>
 
+    <h4> ces utility </h4>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha}   \bigg )^{ 1 / \alpha } </span> where <span class='math'> \alpha \in (-\infin, 1) </span></p>
+    
+    <p> but sometimes we see this form : </p>
+
+    <p><span class='math'> u = \displaystyle\sum  \dfrac{ x_i^{1/ \alpha} }{\alpha}  </span></p>
+    
+  </div>
+</div>
+
+<div class='section margin padding border'>
+
+  <p> marshallian demand. </p>
+  <p> the model. u is subject to a linear cost function as an equality constraint. <span class='math'> L = U + \lambda \cdot (M - \sum px) </span> gives us the FOCs as n equations of the form [1] <span class='math'> L_i = u_i - \lambda \cdot p_i = 0</span>, along with the (n+1)th equation <span class='math'> L_{\lambda} = M - \sum px = 0 </span></p> 
+
+  <p><span class='math'> u = z^{1/\alpha}</span>, so that [2] <span class='math'> u_1 = \frac{1}{\alpha} u z^{-1} \alpha x_1^{\alpha-1} </span></p>
+  
+  <p> using [1] + [2] we can write <span class='math'> \lambda = \dfrac{u_1}{p_1} </span> for all the n equations. strategically, it makes sense to solve all the n equations in terms of x_1. starting with x_2. </p>
+  
+  <p> [3] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} </span> gives <span class='math'> \bigg [ \dfrac{p_2}{p_1} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span> and the result [4] <span class='math'> \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 = x_2 </span> </p>
+  
+  <p> you will have n equations like this. dont be stupid. write x1 as a function of itself in the same form as the others. sub them into the budget constraint L_{\lambda} </p>
+  
+  <p><span class='math'> M = p_1 \Bigg [ \bigg ( \dfrac{p_1}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] + p_2 \Bigg [ \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] + \dots + p_n \Bigg [ \bigg ( \dfrac{p_n}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] </span></p>
+  
+  <p> [5] <span class='math'> M = x_1 \cdot p_1 ^ { \frac{1}{1-\alpha} } \cdot \underbrace{ \displaystyle\sum p_k^{ \frac{\alpha}{\alpha-1} } }_{S} </span></p>
+  
+  <p> because of symmetry, we get [6] : </p>
+  <div class='section border padding'><span class='math'> x_i^* = \dfrac{M}{S} \cdot p_i^{ \frac{1}{\alpha-1} } </span></div>
+  <p> be careful when testing. x* gets you the max u, but z wont necessarily be a max. you must look at u </p>
+  
+</div>
+
+
+<div class='section margin padding border'>
+
+  <div class='section margin padding'>
+
+    <h4> ces utility </h4>
+    <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span> </p>
+    <p> but sometimes we see this form : </p>
+    <p><span class='math'> u = \alpha \cdot \dfrac{x^{1/\delta}}{\delta} + \beta \cdot \dfrac{y^{1/\delta}}{\delta} </span> </p>
+
+  </div>
 </div>
 
 
@@ -53,7 +92,7 @@
   </table>
 
 
-  <pre>
+  <pre class='code'>
    
   let obj = {
    'delta':delta,
@@ -89,6 +128,8 @@
 
     <p> its written into <span class='inline-code'>SHOW_CES_INDIFFERENCE_CURVE()</span></p>
 
+    <p> ** to confirm this numerically, i should plot the gradient. ces utility. pick a point. and get the utility. then, color all the points within 1% utility the same color, like a gradient. </p>
+    
   </div>
   
 
