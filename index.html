@@ -174,82 +174,61 @@
 
 </div> <!-- closing bordered section -->
 
-<div class='section margin padding border'>
-
-  <div class='section margin padding'>
-    <h4> its form </h4>
+  <div class='section border margin padding'>
+    <p> Linear </p>
+    <p><span class='math'> \delta = 1 </span></p>
+    <p> sub <span class='inline-code'>&delta; = 1</span> into <span class='inline-code'>u</span> </p>
+    <span class='math'> u = \alpha x + \beta y </span>
+    <p> just rearrange </p>
+    <p><span class='math'> y = \frac{1}{\beta} \cdot (u - \alpha \cdot x) </span></p>
+    <p><span class='math'> y_{int} = \big ( 0, \frac{u}{\beta} \big ) </span></p>
+    <p><span class='math'> x_{int} = \big ( \frac{u}{\alpha}, 0 \big )  </span></p>
   </div>
-  
-  <div class='box margin padding'>
-  
-  <table class='mytable'>
-    <tr>
-      <td><p> desc</p></td>
-      <td><p> desc</p></td>
-      <td><p> form </p></td>
-      <td><p> desc</p></td>
-      <td><p> for graphing </p></td>
-    </tr>
-  
-  
-    <tr>
-      <td>
-        <p> Linear </p>
-        <p><span class='math'> \delta = 1 </span></p>
-      </td>
-      
-      <td><p> sub <span class='inline-code'>&delta; = 1</span> into <span class='inline-code'>u</span> </p></td>
-      <td><span class='math'> u = \alpha x + \beta y </span></td>
-      <td><p> just rearrange </p></td>
-      <td><p><span class='math'> y = \frac{1}{\beta} \cdot (u - \alpha \cdot x) </span></p>
-          <p><span class='math'> y_{int} = \big ( 0, \frac{u}{\beta} \big ) </span></p>
-          <p><span class='math'> x_{int} = \big ( \frac{u}{\alpha}, 0 \big )  </span></p></td>
-    </tr>
-    
-    <tr>
-      <td>
+
+<div class='section border margin padding'>
         <p> Log </p>
         <p><span class='math'> \delta = 0 </span></p>
-      </td>
-      <td>
+
+      
         <div> take the total derivative of <span class='math'>U</span></div>
-        <p><span class='math'>dU = \frac{\partial U}{\partial x} \cdot dx + \frac{\partial U}{\partial y} \cdot dy </span></p>
+        <p><span class='math'>dU = \sum \frac{\partial U}{\partial x_1} \cdot dx_1 = 0 </span></p>
+        <p> the delta cancels out </p>
+        <p> sub <span class='math'>\alpha = 0</span> and integrate wrt x1 or x2 </p>
+        <p> du = 0, so that stays at 0 </p>
+        
         <p><span class='math'>dU = \alpha \big ( \frac{U}{x} \big )^{1-\delta} \cdot dx + \beta \big ( \frac{U}{y} \big )^{1-\delta} \cdot dy </span></p>
         <div> sub <span class='math'>\delta = 0</span> and integrate </div>
         <p><span class='math'>\int \frac{1}{U} dU = \alpha \int \frac{1}{x} dx + \beta \int \frac{1}{y} dy</span></p>
-      </td>
-      <td><p><span class='math'> u = \alpha \ln x + \beta \ln y </span></p>
-          <p><span class='math'> u = x^{\alpha} \cdot y^{\beta} </span></p>
-      <td><p> just rearrange </p></td>
-      <td><p><span class='math'> \cdot </span></p>
-          <p><span class='math'> y = \bigg ( \dfrac{u}{x^{\alpha}} \bigg ) ^ {\frac{1}{\beta}} </span></p></td>
-    </tr>
-    
-    <tr>
+      
+      <h4> reduces to </h4>
+      <p><span class='math'> u = \alpha \ln x + \beta \ln y </span></p>
+      <p><span class='math'> u = x^{\alpha} \cdot y^{\beta} </span></p>
+      <p> just rearrange </p>
+      <p><span class='math'> \cdot </span></p>
+  <p><span class='math'> y = \bigg ( \dfrac{u}{x^{\alpha}} \bigg ) ^ {\frac{1}{\beta}} </span></p>
+</div>
+
+
+<div class='section border margin padding'>
       <td><p> Leontieff </p><p><span class='math'> \delta = -\infin </span></p></td>
       <td><p> theres a tricky limit </p></td>
       <td><p> ** <span class='math'> u = \min(x,y) </span></p></td>
       <td><p> ** </p></td>
       <td><p> **</p></td>
-    </tr>
-    
-    <tr>
-      <td><p> Else </p><p><span class='math'> 0 \lt \delta \lt 1 </span></p>
-          <p><span class='math'> -\infin \lt \delta \lt 0 </span></p></td>
-      <td><p> nothing </p></td>
-      <td><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></td>
-      <td><p> just rearrange </p></td>
-      <td>
-        <p><span class='math'> y = \Big ( \dfrac{u^{\delta} - \alpha \cdot x^{\delta}}{\beta} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \ge \alpha \cdot x^{\delta}</span></p>
-        <p><span class='math'> x = \Big ( \dfrac{u^{\delta} - \beta \cdot x^{\delta}}{\alpha} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \ge \beta \cdot y^{\delta}</span></p>
-      </td>
-    </tr>
-  </table>
-  
-  </div>
-
 </div>
+    
+  <div class='section border margin padding'>
+    <p> Else </p><p><span class='math'> 0 \lt \delta \lt 1 </span></p>
+    <p><span class='math'> -\infin \lt \delta \lt 0 </span></p>
 
+    <p> nothing </p>
+    <span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span>
+    <p> just rearrange </p>
+
+    <p><span class='math'> y = \Big ( \dfrac{u^{\delta} - \alpha \cdot x^{\delta}}{\beta} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \ge \alpha \cdot x^{\delta}</span></p>
+    <p><span class='math'> x = \Big ( \dfrac{u^{\delta} - \beta \cdot x^{\delta}}{\alpha} \Big ) ^ {\frac{1}{\delta}} </span> where <span class='math'> u^{\delta} \ge \beta \cdot y^{\delta}</span></p>
+  </div>
+ 
 
 <div class='section margin padding border'>
 
