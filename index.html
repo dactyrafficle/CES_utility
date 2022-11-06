@@ -77,18 +77,6 @@
   <p> what if we looked at monotonic transforms of u AT the solution x*, not just generally monotonic xforms ? </p>
 </div>
 
-<div class='section margin padding border'>
-
-  <div class='section margin padding'>
-
-    <h4> ces utility </h4>
-    <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span> </p>
-    <p> but sometimes we see this form : </p>
-    <p><span class='math'> u = \alpha \cdot \dfrac{x^{1/\delta}}{\delta} + \beta \cdot \dfrac{y^{1/\delta}}{\delta} </span> </p>
-
-  </div>
-</div>
-
 
 <div class='section margin padding border'>
 
@@ -160,7 +148,6 @@
   <table class='mytable'>
     <tr>
       <td><p> desc</p></td>
-      <td><p> delta </p></td>
       <td><p> desc</p></td>
       <td><p> form </p></td>
       <td><p> desc</p></td>
@@ -169,8 +156,11 @@
   
   
     <tr>
-      <td><p> Linear </p></td>
-      <td><span class='math'> \delta = 1 </span></td>
+      <td>
+        <p> Linear </p>
+        <p><span class='math'> \delta = 1 </span></p>
+      </td>
+      
       <td><p> sub <span class='inline-code'>&delta; = 1</span> into <span class='inline-code'>u</span> </p></td>
       <td><span class='math'> u = \alpha x + \beta y </span></td>
       <td><p> just rearrange </p></td>
@@ -180,8 +170,10 @@
     </tr>
     
     <tr>
-      <td><p> Log </p></td>
-      <td><span class='math'> \delta = 0 </span></td>
+      <td>
+        <p> Log </p>
+        <p><span class='math'> \delta = 0 </span></p>
+      </td>
       <td>
         <div> take the total derivative of <span class='math'>U</span></div>
         <p><span class='math'>dU = \frac{\partial U}{\partial x} \cdot dx + \frac{\partial U}{\partial y} \cdot dy </span></p>
@@ -197,8 +189,7 @@
     </tr>
     
     <tr>
-      <td><p> Leontieff </p></td>
-      <td><span class='math'> \delta = -\infin </span></td>
+      <td><p> Leontieff </p><p><span class='math'> \delta = -\infin </span></p></td>
       <td><p> theres a tricky limit </p></td>
       <td><p> ** <span class='math'> u = \min(x,y) </span></p></td>
       <td><p> ** </p></td>
@@ -206,8 +197,7 @@
     </tr>
     
     <tr>
-      <td><p> Else </p></td>
-      <td><p><span class='math'> 0 \lt \delta \lt 1 </span></p>
+      <td><p> Else </p><p><span class='math'> 0 \lt \delta \lt 1 </span></p>
           <p><span class='math'> -\infin \lt \delta \lt 0 </span></p></td>
       <td><p> nothing </p></td>
       <td><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></td>
@@ -223,46 +213,6 @@
 
 </div>
 
-
-
-
-<div class='section margin padding border'>
-
-  <div class='section margin padding'>
-    <h4> marshallian demand </h4>
-    <p><span class='math'> u = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } </span></p>
-    
-    <p><span class='math'> L = \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ { 1 / \delta } + \lambda \cdot \big ( M - p_x \cdot x - p_y \cdot y \big ) </span></p>
-    <p> taking for granted that theyre equality constraint <p>
-    
-    <ul>
-    <li><p><span class='math'> L_x = \dfrac{1}{\delta} \cdot \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ {\frac{1}{\delta} - 1} \cdot \delta \cdot \alpha \cdot x ^ {\delta - 1} - \lambda \cdot p_x = u ^ {1-\delta} \cdot \alpha \cdot x^{\delta - 1} - \lambda \cdot p_x = 0 </span></p>
-    
-    <li><p><span class='math'> L_y = \dfrac{1}{\delta} \cdot \big ( \alpha \cdot x^{\delta} + \beta \cdot y^{\delta} \big ) ^ {\frac{1}{\delta} - 1} \cdot \delta \cdot \beta \cdot y ^ {\delta - 1} - \lambda \cdot p_y = u ^ {1-\delta} \cdot \beta \cdot x^{\delta - 1} - \lambda \cdot p_y = 0 </span></p>
-
-    <li><p><span class='math'> L_{\lambda} = M - p_x \cdot x - p_y \cdot y </span></p>
-    </ul>
-
-    <p> equating <span class='math'>L_x</span> and <span class='math'>L_y</span> on <span class='math'>\lambda</span> : </p>
-    <p><span class='math'>  \dfrac{y}{x} = \bigg ( \dfrac{p_y}{p_x} \cdot \dfrac{\alpha}{\beta} \bigg ) ^ {\frac{1}{\delta - 1}} = A^B </span> where <span class='math'> A = \frac{p_y}{p_x} \cdot \frac{\alpha}{\beta} </span> and <span class='math'> B = {\frac{1}{\delta - 1}} </span></p>
-
-    <p> Thats the expansion path. Sub it into the budget constraint. </p>
-    <p><span class='math'> x = \dfrac{M}{p_x + p_y \cdot A ^ B} </span></p>
-    <p><span class='math'> y = \dfrac{M}{p_x \cdot A ^ {-B} + p_y} </span></p>
-    
-
-    <table class='mytable'>
-      <tr><td><p><span class='math'>\delta</span> : delta </p></td><td><span class='math'>B = \frac{1}{\delta-1}</span></td><td><span class='math'>A^B</span></td><td>result</td></tr>
-      <tr><td><p><span class='math'>-\infin</span></p></td><td>0, negative</td><td>B^0 = 1</td><td>y=x : A doesnt matter at all </td></tr>
-      <tr><td><p><span class='math'>0</span></p></td><td>B = -1</td><td>B^{-1} = 1/B</td><td>C = A. Maybe this is neutral </td></tr>
-      <tr><td><p><span class='math'>1</span></p></td><td>-infin</td><td>B^{-infin} = 0</td><td>A matters a lot</td></tr>
-    </table>
-    
-    <!-- <div id='container_expansion_path'></div> -->
-    
-  </div>
-
-</div>
 
 <div class='section margin padding border'>
 
