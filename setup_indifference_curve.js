@@ -39,10 +39,34 @@
     c[0] = b[0].RETURN_CONTAINER();
     container_indifference_curve.appendChild(c[0]);
     
-    b[0].RESIZE(500, 500);    // this is the number of pixels
+      let w_ = window.innerWidth*0.9
+      let h_ = w_;
+      
+      if (w_ > 500) {
+        w_ = 500;
+        h_ = w_;
+      }
+    
+    
+    b[0].RESIZE(w_, h_);    // this is the number of pixels
     b[0].RANGE_X(-1, 11);          // set the range in x
     b[0].RANGE_Y(-1, 11);          // set the range in y 
 
+    window.addEventListener('resize', function() {
+      
+      
+      let w_ = window.innerWidth*0.9
+      let h_ = w_;
+      
+      if (w_ > 500) {
+        w_ = 500;
+        h_ = w_;
+      }
+      
+      b[0].RESIZE(w_, h_);    // this is the number of pixels
+      UPDATE_BOX(b[0], obj);
+    });
+      
     UPDATE_BOX(b[0], obj);
       
   }); // CLOSING window.onload

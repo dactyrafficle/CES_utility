@@ -104,6 +104,21 @@
   <p><span class='math'> x_1^* = \dfrac{1}{\displaystyle\sum p_k^{-1}} \cdot \dfrac{M}{p_1^{2}} </span></p>
 </div>
 
+<div class='section margin padding border'>
+
+  <div class='section margin padding'>
+
+    <h4> a more general case </h4>
+    <p> here there are coefficients to add weight to specific goods </p>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  \gamma_i x_i^{\alpha} \bigg )^{ 1 / \delta } </span></p>
+    <p> this gives us the following equilibrium allocation </p>
+    <p> [4] : <span class='math border margin padding'> \gamma_2^{-\sigma} p_2^{\sigma} x_2 = \gamma_1^{-\sigma} p_1^{\sigma} x_1 </span></p>
+    <p> this shouldnt be surprizing. the delta still only does a monotonic xform of z. that has not changed. </p>
+    <p> the weights, <span class='math'>\gamma_i</span> will feature in the final allocation </p>
+    
+  </div>
+</div>
+
 <div class='section margin padding border'> 
   
 
@@ -130,9 +145,9 @@
   <div class='box margin padding'>
 
   <table class='mytable'>
-    <tr><td><span class='math'>\delta</span> : delta </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td></tr>
-    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
-    <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
+    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td></tr>
+    <tr><td><span class='math'>\gamma_1</span> : coef_1 </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
+    <tr><td><span class='math'>\gamma_2</span> : coef_2 </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
   </table>
 
   </div>
@@ -255,12 +270,15 @@
     <!-- <tr><td></td><td></td></tr> -->
   </table>
   </div>
+</div>
+
+<div class='section margin padding' id='container_utility_vs_delta'></div>
   
   <div class='box margin padding'>
   
   <div class='section'>
   
-  <div class='box' id='container_utility_vs_delta'></div>
+
 
   <div class='box margin padding' style='vertical-align: middle;'>
         <table class='untable'>
@@ -287,7 +305,6 @@
   
   </div>
 
-</div>
 
 
 

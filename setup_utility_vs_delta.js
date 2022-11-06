@@ -61,11 +61,34 @@
     c[1] = b[1].RETURN_CONTAINER();
     container_utility_vs_delta.appendChild(c[1]);
     
-    b[1].RESIZE(500, 500);
+      let w_ = window.innerWidth*0.9
+      let h_ = w_;
+      
+      if (w_ > 500) {
+        w_ = 500;
+        h_ = w_;
+      }
+    
+    
+    b[1].RESIZE(w_, h_);    // this is the number of pixels
     b[1].RANGE_X(-5, 1);
     b[1].RANGE_Y(-1, 10);
     
-
+    window.addEventListener('resize', function() {
+      
+      
+      let w_ = window.innerWidth*0.9
+      let h_ = w_;
+      
+      if (w_ > 500) {
+        w_ = 500;
+        h_ = w_;
+      }
+      
+      b[1].RESIZE(w_, h_);    // this is the number of pixels
+      UPDATE_BOX(b[1], obj);
+    });
+    
     current_allocation = UPDATE_BOX(b[1], obj);
     console.log(current_allocation);
     myoutput_A.innerHTML = (current_allocation.A).toFixed(4);
