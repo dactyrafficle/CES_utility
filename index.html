@@ -3,16 +3,19 @@
 <head>
 
   <title> CES utility </title>
+  
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
-  <link rel="stylesheet" href="a.css">
-  <link rel="icon" href="a.png">
-  <script src="./a.js"></script>
+  <link rel="stylesheet" href="./includes/a.css">
+  <link rel="icon" href="./includes/a_green.png">
+  <script src="./includes/a.js"></script>
   
   <script src='Box.js'></script>
 
   
-  <script src="./katex/katex.min.js"></script>
-  <link rel="stylesheet" href="./katex/katex.min.css" >
+  <script src="./includes/katex/katex.min.js"></script>
+  <link rel="stylesheet" href="./includes/katex/katex.min.css" >
 
   <script src="./setup.js"></script>
   <script src="./setup_indifference_curve.js"></script>
@@ -30,9 +33,10 @@
   <div class='section margin padding'>
 
     <h4> ces utility </h4>
-    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha}   \bigg )^{ 1 / \alpha } </span> where <span class='math'> \alpha \in (-\infin, 1) </span></p>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha}   \bigg )^{ 1 / \delta } </span> where <span class='math'> \alpha, \delta \in (-\infin, 1) </span></p>
     
-    <p> but sometimes we see this form : </p>
+    <p> normally <span class='math'>\alpha</span> and <span class='math'>\delta</span> are the same, but im distinguishing them bc i think it can reveal some interesting things </p>
+    <p> sometimes we see this form : </p>
 
     <p><span class='math'> u = \displaystyle\sum  \dfrac{ x_i^{1/ \alpha} }{\alpha}  </span></p>
     
@@ -44,13 +48,15 @@
   <p> marshallian demand. </p>
   <p> the model. u is subject to a linear cost function as an equality constraint. <span class='math'> L = U + \lambda \cdot (M - \sum px) </span> gives us the FOCs as n equations of the form [1] <span class='math'> L_i = u_i - \lambda \cdot p_i = 0</span>, along with the (n+1)th equation <span class='math'> L_{\lambda} = M - \sum px = 0 </span></p> 
 
-  <p><span class='math'> u = z^{1/\alpha}</span>, so that [2] <span class='math'> u_1 = \frac{1}{\alpha} u z^{-1} \alpha x_1^{\alpha-1} </span></p>
+  <p><span class='math'> u = z^{1/\delta}</span>, so that [2] <span class='math'> u_1 = \frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1} </span></p>
   
-  <p> using [1] + [2] we can write <span class='math'> \lambda = \dfrac{u_1}{p_1} </span> for all the n equations. strategically, it makes sense to solve all the n equations in terms of x_1. starting with x_2. </p>
+  <p> using [1] + [2] we can write <span class='math'> \lambda = \dfrac{u_1}{p_1} </span> for all the n equations. strategically, it makes sense to solve all the n equations in terms of <span class='math'>x_1</span>. starting with <span class='math'>x_2</span>. </p>
   
-  <p> [3] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} </span> gives <span class='math'> \bigg [ \dfrac{p_2}{p_1} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span> and the result [4] <span class='math'> \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 = x_2 </span> </p>
+  <p> [3] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} \implies \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1}}{p_1} = \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_2^{\alpha-1}}{p_2} </span> which gives <span class='math'> \bigg [ \dfrac{p_2}{p_1} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span> and the result [4] <span class='math'> \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 = x_2 </span> </p>
   
-  <p> you will have n equations like this. dont be stupid. write x1 as a function of itself in the same form as the others. sub them into the budget constraint L_{\lambda} </p>
+  <p> the reason i wanted to distinguish <span class='math'>\alpha</span> and <span class='math'>\delta</span> is because we can see from this that the <span class='math'>\delta</span> parameters cancel out.</p>
+  
+  <p> you will have n equations like this. dont be stupid. write every <span class='math'>x_i</span> as a function of <span class='math'>x_1</span>, including <span class='math'>x_1</span>, and sub them into the budget constraint <span class='math'>L_{\lambda}</span> </p>
   
   <p><span class='math'> M = p_1 \Bigg [ \bigg ( \dfrac{p_1}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] + p_2 \Bigg [ \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] + \dots + p_n \Bigg [ \bigg ( \dfrac{p_n}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] </span></p>
   
@@ -62,6 +68,14 @@
   
 </div>
 
+<div class='section margin padding border'>
+
+  <p> im interested in the case where delta = 1, so that were just looking at something like <span class='math'> u= \sum x_i^{\alpha}</span>
+  
+  <p> why even bother with delta ? if alpha is positive, no problem. if alpha is negative, then just make u have a negative term. the delta convolutes things </p>
+  
+  <p> what if we looked at monotonic transforms of u AT the solution x*, not just generally monotonic xforms ? </p>
+</div>
 
 <div class='section margin padding border'>
 
