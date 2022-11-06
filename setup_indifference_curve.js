@@ -36,10 +36,10 @@
 
     // INITIALIZE BOX
     b[0] = new Box();
-    c[0] = b[0].RETURN_CANVAS();
+    c[0] = b[0].RETURN_CONTAINER();
     container_indifference_curve.appendChild(c[0]);
     
-    b[0].CANVAS_SIZE(500, 500);    // this is the number of pixels
+    b[0].RESIZE(500, 500);    // this is the number of pixels
     b[0].RANGE_X(-1, 11);          // set the range in x
     b[0].RANGE_Y(-1, 11);          // set the range in y 
 

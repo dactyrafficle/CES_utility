@@ -11,7 +11,7 @@
   <link rel="icon" href="./includes/a_green.png">
   <script src="./includes/a.js"></script>
   
-  <script src='Box.js'></script>
+  <script src='./includes/r_box.js'></script>
 
   
   <script src="./includes/katex/katex.min.js"></script>
@@ -21,6 +21,17 @@
   <script src="./setup_indifference_curve.js"></script>
   <script src="./setup_utility_vs_delta.js"></script>
   <script src="./setup_marshallian_demand.js"></script>
+  
+  <style>
+    
+    .math {
+      white-space: nowrap;
+    }
+    .nowrap {
+      white-space: nowrap;
+    }
+    
+  </style>
 </head>
 
 <body>
@@ -33,9 +44,10 @@
   <div class='section margin padding'>
 
     <h4> ces utility </h4>
-    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha}   \bigg )^{ 1 / \delta } </span> where <span class='math'> \alpha, \delta \in (-\infin, 1) </span></p>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha} \bigg )^{ 1 / \delta } </span> where <span class='math'> \alpha, \delta \in (-\infin, 1) </span></p>
+    <p> and we define <span class='math'> \sigma = \dfrac{1}{1-\alpha} </span></p>
     
-    <p> normally <span class='math'>\alpha</span> and <span class='math'>\delta</span> are the same, but im distinguishing them bc i think it can reveal some interesting things </p>
+    <p> assume <span class='math'>\alpha</span> and <span class='math'>\delta</span> are the same. im distinguishing them notationally bc i think it can reveal some interesting things </p>
     <p> sometimes we see this form : </p>
 
     <p><span class='math'> u = \displaystyle\sum  \dfrac{ x_i^{1/ \alpha} }{\alpha}  </span></p>
@@ -46,35 +58,65 @@
 <div class='section margin padding border'>
 
   <p> marshallian demand. </p>
-  <p> the model. u is subject to a linear cost function as an equality constraint. <span class='math'> L = U + \lambda \cdot (M - \sum px) </span> gives us the FOCs as n equations of the form [1] <span class='math'> L_i = u_i - \lambda \cdot p_i = 0</span>, along with the (n+1)th equation <span class='math'> L_{\lambda} = M - \sum px = 0 </span></p> 
+  <p> the model. u is subject to a linear cost function as an equality constraint. <span class='math'> L = U + \lambda \cdot (M - \sum px) </span> gives us the FOCs as n equations of the form <span class='nowrap'>[1] <span class='math'> L_i = u_i - \lambda \cdot p_i = 0</span></span>, along with the (n+1)th equation <span class='math'> L_{\lambda} = M - \sum px = 0 </span></p> 
 
-  <p><span class='math'> u = z^{1/\delta}</span>, so that [2] <span class='math'> u_1 = \frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1} </span></p>
+  <p><span class='math'> u = z^{1/\delta}</span>, so that <span class='nowrap'>[2] <span class='math'> u_1 = \frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1} </span></span></p>
   
-  <p> using [1] + [2] we can write <span class='math'> \lambda = \dfrac{u_1}{p_1} </span> for all the n equations. strategically, it makes sense to solve all the n equations in terms of <span class='math'>x_1</span>. starting with <span class='math'>x_2</span>. </p>
+  <p> using <span class='nowrap'>[1] + [2]</span> we can write <span class='math'> \lambda = \dfrac{u_1}{p_1} </span> for all the n equations. strategically, it makes sense to solve all the n equations in terms of <span class='math'>x_1</span>. starting with <span class='math'>x_2</span>. </p>
   
-  <p> [3] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} \implies \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1}}{p_1} = \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_2^{\alpha-1}}{p_2} </span> which gives <span class='math'> \bigg [ \dfrac{p_2}{p_1} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span> and the result [4] <span class='math'> \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 = x_2 </span> </p>
+  <p> <span class='nowrap'>[3] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} \implies \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1}}{p_1} = \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_2^{\alpha-1}}{p_2} </span></span> which gives <span class='math'> \bigg [ \dfrac{p_2}{p_1} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span></p>
+
+  <p> and the result <span class='nowrap'>[4] <span class='math'> x_2 = \bigg ( \dfrac{p_1}{p_2} \bigg )^{\sigma} x_1 \implies x_2 = p_2^{-\sigma} p_1^{\sigma} x_1 </span></span> or <span class='math border margin padding'> p_2^{\sigma} x_2 = p_1^{\sigma} x_1 </span></p>
   
   <p> the reason i wanted to distinguish <span class='math'>\alpha</span> and <span class='math'>\delta</span> is because we can see from this that the <span class='math'>\delta</span> parameters cancel out.</p>
   
   <p> you will have n equations like this. dont be stupid. write every <span class='math'>x_i</span> as a function of <span class='math'>x_1</span>, including <span class='math'>x_1</span>, and sub them into the budget constraint <span class='math'>L_{\lambda}</span> </p>
   
-  <p><span class='math'> M = p_1 \Bigg [ \bigg ( \dfrac{p_1}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] + p_2 \Bigg [ \bigg ( \dfrac{p_2}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] + \dots + p_n \Bigg [ \bigg ( \dfrac{p_n}{p_1} \bigg )^{\frac{1}{\alpha-1}} x_1 \Bigg ] </span></p>
+  <!-- <p> [5a] <span class='math'> M = p_1 \Bigg [ \bigg ( \dfrac{p_1}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] + p_2 \Bigg [ \bigg ( \dfrac{p_2}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] + \dots + p_n \Bigg [ \bigg ( \dfrac{p_n}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] </span></p> -->
   
-  <p> [5] <span class='math'> M = x_1 \cdot p_1 ^ { \frac{1}{1-\alpha} } \cdot \underbrace{ \displaystyle\sum p_k^{ \frac{\alpha}{\alpha-1} } }_{S} </span></p>
+  
+  <p><span class='nowrap'> [5a] <span class='math'> M = p_1 \Big [ p_1^{-\sigma} p_1^{\sigma} x_1 \Big ] + p_2 \Big [ p_2^{-\sigma} p_1^{\sigma} x_1 \Big ] + \dots + p_n \Big [ p_n^{-\sigma} p_1^{\sigma} x_1 \Big ] </span></span></p>
+  
+  <p><span class='nowrap'> [5b] <span class='math'> M = p_1^{\sigma} x_1 \Big [ p_1 p_1^{-\sigma} + p_2 p_2^{-\sigma} + \dots + p_n p_n^{-\sigma} \Big ] </span></span></p>
+  
+  <p><span class='nowrap'> [5c] <span class='math'> M = x_1 \cdot p_1 ^ { \sigma } \cdot \underbrace{ \displaystyle\sum p_k^{1-\sigma} }_{S} </span></span> [look at how convenient result [4] is here] </p>
   
   <p> because of symmetry, we get [6] : </p>
-  <div class='section border padding'><span class='math'> x_i^* = \dfrac{M}{S} \cdot p_i^{ \frac{1}{\alpha-1} } </span></div>
-  <p> be careful when testing. x* gets you the max u, but z wont necessarily be a max. you must look at u </p>
+  <div class='section border padding'><span class='math'> x_i^* = \dfrac{1}{\displaystyle\sum p_k^{1-\sigma}} \cdot \dfrac{M}{p_i^{\sigma}} = \dfrac{1}{S} \cdot \dfrac{M}{p_i^{\sigma}} </span></div>
   
 </div>
 
 <div class='section margin padding border'>
-
-  <p> im interested in the case where delta = 1, so that were just looking at something like <span class='math'> u= \sum x_i^{\alpha}</span>
+  <h4> little analysis </h4>
+  <p> its clear that <u>in this case</u>, <span class='math'>\delta</span> has no influence on the optimal allocations </p>
+  <p> why ? </p>
+  <p> right off the bat, i think because there are no weights inside <span class='math'>z</span></p>
+  <p> be careful when testing, since i shorthand wrote <span class='math'> u = z^{1/\delta}</span>, <span class='math'>x^*</span> gets you the max <span class='math'>u</span>, but depending on <span class='math'>\delta</span>, <span class='math'>z</span> wont necessarily be a max. you must look at <span class='math'>u</span> </p>
   
+</div>
+
+<div class='section margin padding border'>
+  <h4> example </h4>
+  <p> consider <span class='math'> u= \sqrt{x_1} + \sqrt{x_2} + \dots + \sqrt{x_n} </span></p>
+  <p> in the case, you could say that <span class='math'>\delta = 1</span>. but you could also say that if  <span class='math'>\delta = \frac{1}{2}</span>, maxing <span class='math'>u</span> is the same as maxing <span class='math'>z</span>, since <span class='math'>u</span> is a positive monotonic xform of <span class='math'>z</span>. so the mapping doesnt change if we just get rid of <span class='math'>\delta</span> </p>
+
+  <p><span class='math'>\sigma = \frac{1}{1-\frac{1}{2}} = 2 </span></p>
+  <p><span class='math'> x_1^* = \dfrac{1}{\displaystyle\sum p_k^{-1}} \cdot \dfrac{M}{p_1^{2}} </span></p>
+</div>
+
+<div class='section margin padding border'> 
+  
+
+  
+
   <p> why even bother with delta ? if alpha is positive, no problem. if alpha is negative, then just make u have a negative term. the delta convolutes things </p>
   
   <p> what if we looked at monotonic transforms of u AT the solution x*, not just generally monotonic xforms ? </p>
+  
+  <p> if alpha \gt 0, then if there are no weights, we can get rid of delta, because then it is just a monotonic xform. and it doesnt change any of the allocations </p>
+  <p> remember that for x \gt 0, x^a \gt 0 for all a \in (-infin, infin) </p>
+  <p> but if a \in (0, 1), then x^a \lt x </p>
+  <p> if <span class='math'>u = z^{\delta}</span>, and <span class='math'>\delta \in (0,1)</span>, to optimize u means to optimize z. so you could simplify life by getting rid of alpha </p>  
 </div>
 
 
@@ -93,32 +135,12 @@
     <tr><td><span class='math'>\beta</span> : beta </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
   </table>
 
-
-  <pre class='code'>
-   
-  let obj = {
-   'delta':delta,
-   'alpha':alpha,  
-   'beta':beta,
-   'u':null,
-   'x':5.5,
-   'y':4.7
-  }
-  
-  b.LINE_WIDTH(2);
-  b.STROKE_STYLE('#fc0a');
-  b.SHOW_CES_INDIFFERENCE_CURVE(obj);
-   
-  b.FILL_STYLE('#fc0a');
-  b.RADIUS(2);
-  b.SHOW_VALUE(obj);
-
-  </pre>
-
-
   </div>
+</div>
 
-  <div class='box margin padding' id='container_indifference_curve'></div>
+<div class='section margin padding' id='container_indifference_curve'></div>
+
+<div class='section margin padding border'>
   
   <div class='section margin padding'>
     <h4> a comment on graphing </h4>

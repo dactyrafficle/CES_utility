@@ -58,10 +58,10 @@
     
     // INITIALIZE BOX
     b[1] = new Box();
-    c[1] = b[1].RETURN_CANVAS();
+    c[1] = b[1].RETURN_CONTAINER();
     container_utility_vs_delta.appendChild(c[1]);
     
-    b[1].CANVAS_SIZE(500, 500);
+    b[1].RESIZE(500, 500);
     b[1].RANGE_X(-5, 1);
     b[1].RANGE_Y(-1, 10);
     
