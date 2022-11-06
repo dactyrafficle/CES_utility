@@ -75,7 +75,7 @@
   <!-- <p> [5a] <span class='math'> M = p_1 \Bigg [ \bigg ( \dfrac{p_1}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] + p_2 \Bigg [ \bigg ( \dfrac{p_2}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] + \dots + p_n \Bigg [ \bigg ( \dfrac{p_n}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] </span></p> -->
   
   
-  <p><span class='nowrap'> [5a] <span class='math'> M = p_1 \Big [ p_1^{-\sigma} p_1^{\sigma} x_1 \Big ] + p_2 \Big [ p_2^{-\sigma} p_1^{\sigma} x_1 \Big ] + \dots + p_n \Big [ p_n^{-\sigma} p_1^{\sigma} x_1 \Big ] </span></span></p>
+  <p><span class='nowrap'> [5a] <span class='math'> M = p_1 \Big [ p_1^{-\sigma} p_1^{\sigma} x_1 \Big ]</span></span> <span class='math'>\text{} + p_2 \Big [ p_2^{-\sigma} p_1^{\sigma} x_1 \Big ]</span> <span class='math'>\text{} + \dots + p_n \Big [ p_n^{-\sigma} p_1^{\sigma} x_1 \Big ] </span></p>
   
   <p><span class='nowrap'> [5b] <span class='math'> M = p_1^{\sigma} x_1 \Big [ p_1 p_1^{-\sigma} + p_2 p_2^{-\sigma} + \dots + p_n p_n^{-\sigma} \Big ] </span></span></p>
   
@@ -139,15 +139,22 @@
 
   <div class='section margin padding'>
     <h4> the indifference curve </h4>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  \gamma_i x_i^{\alpha} \bigg )^{ 1 / \delta } </span></p>
     <p> i just picked a point at random, like <span class='inline-code'>(5.5,4.7)</span>. then given delta, alpha, beta, solved for u. then used u to plot the idc </p>
   </div>
  
   <div class='box margin padding'>
 
   <table class='mytable'>
-    <tr><td><span class='math'>\alpha</span> : alpha </td><td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td></tr>
+    <tr>
+      <td><span class='math'>\alpha</span> : alpha </td>
+      <td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td>
+      <td><div class='mybuttons margin padding noselect' id='myinput_alpha_up'>+</div></td>
+      <td><div class='mybuttons margin padding noselect' id='myinput_alpha_down'>-</div></td>
+    </tr>
+    <tr><td><span class='math'>\sigma</span> : sigma </td><td><input disabled class='myinputs' type='number' value=0.01 step=0.01 id='myinput_sigma' /></td></tr>
     <tr><td><span class='math'>\gamma_1</span> : coef_1 </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
-    <tr><td><span class='math'>\gamma_2</span> : coef_2 </td><td><input class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
+    <tr><td><span class='math'>\gamma_2</span> : coef_2 </td><td><input disabled class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
   </table>
 
   </div>
