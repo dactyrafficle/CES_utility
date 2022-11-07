@@ -39,10 +39,16 @@
       }
       obj.delta += d_delta;
       
+      if (obj.delta > -0.01 && obj.delta < 0.01) {
+        obj.delta = 0;
+      }
+      console.log(obj);
+      
       myinput_delta.value = obj.delta;
       obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
       obj.sigma = 1/(1-obj.delta);
-      myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
+      myinput_sigma.value = parseFloat(obj.sigma).toFixed(4);
+
       UPDATE_BOX(b[0], obj);
     });
     mybutton_alpha_down.addEventListener('click', function() {
@@ -56,10 +62,15 @@
       }
       obj.delta -= d_delta;
       
+      if (obj.delta > -0.01 && obj.delta < 0.01) {
+        obj.delta = 0;
+      }
+      console.log(obj);
+      
       myinput_delta.value = obj.delta;
       obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
       obj.sigma = 1/(1-obj.delta);
-      myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
+      myinput_sigma.value = parseFloat(obj.sigma).toFixed(4);
       UPDATE_BOX(b[0], obj);
     });
     
@@ -99,7 +110,7 @@
     obj.beta = CLEAN_INPUT(obj.beta, myinput_beta, 0.01, 15);
     
     obj.sigma = 1/(1-obj.delta);
-    myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
+    myinput_sigma.value = parseFloat(obj.sigma).toFixed(4);
     
     [myinput_delta, myinput_alpha, myinput_beta].forEach(function(a, index, arr) {
 
@@ -171,7 +182,7 @@
     b.LINE_WIDTH(2);
     b.STROKE_STYLE('#fc0a');
     let a = b.SHOW_CES_INDIFFERENCE_CURVE(obj);
-    console.log(a);
+    // console.log(a);
     
     // THE POINT
     b.FILL_STYLE('#fc0a');
