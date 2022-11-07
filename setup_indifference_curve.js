@@ -7,6 +7,8 @@
     'alpha':null,   // gamma_1
     'beta':null,    // gamma_2
     'sigma':null,
+    'gamma_1':0.7,
+    'gamma_2':0.3,
     'u':null,
     'x':5.5,
     'y':4.7
@@ -20,10 +22,23 @@
     
     mybutton_alpha_up = document.getElementById('mybutton_alpha_up');
     mybutton_alpha_down = document.getElementById('mybutton_alpha_down');
+    
+    mybutton_gamma_1_up = document.getElementById('mybutton_gamma_1_up');
+    mybutton_gamma_1_down = document.getElementById('mybutton_gamma_1_down');
+    
     myinput_sigma = document.getElementById('myinput_sigma');
     
     mybutton_alpha_up.addEventListener('click', function() {
-      obj.delta += 0.05;
+      
+      let d_delta = 0.05;
+      if (obj.delta < -1.49) {
+        d_delta = 0.5;
+      }
+      if (obj.delta < -9.99) {
+        d_delta = 5;
+      }
+      obj.delta += d_delta;
+      
       myinput_delta.value = obj.delta;
       obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
       obj.sigma = 1/(1-obj.delta);
@@ -31,11 +46,51 @@
       UPDATE_BOX(b[0], obj);
     });
     mybutton_alpha_down.addEventListener('click', function() {
-      obj.delta -= 0.05;
+      
+      let d_delta = 0.05;
+      if (obj.delta < -0.99) {
+        d_delta = 0.5;
+      }
+      if (obj.delta < -4.99) {
+        d_delta = 5;
+      }
+      obj.delta -= d_delta;
+      
       myinput_delta.value = obj.delta;
       obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
       obj.sigma = 1/(1-obj.delta);
       myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
+      UPDATE_BOX(b[0], obj);
+    });
+    
+    mybutton_gamma_1_up.addEventListener('click', function() {
+      obj.gamma_1 += 0.01;
+      obj.gamma_2 = 1 - obj.gamma_1;
+      obj.alpha = obj.gamma_1;
+      obj.beta = obj.gamma_2;
+      console.log(obj);
+      
+      obj.alpha = CLEAN_INPUT(obj.alpha, myinput_alpha, 0, 1);
+      obj.beta = CLEAN_INPUT(obj.beta, myinput_beta, 0, 1);
+      
+      myinput_alpha.value = parseFloat(obj.gamma_1).toFixed(2);
+      myinput_beta.value = parseFloat(obj.gamma_2).toFixed(2)
+      
+      UPDATE_BOX(b[0], obj);
+    });
+    mybutton_gamma_1_down.addEventListener('click', function() {
+      obj.gamma_1 -= 0.01;
+      obj.gamma_2 = 1 - obj.gamma_1;
+      obj.alpha = obj.gamma_1;
+      obj.beta = obj.gamma_2;
+      console.log(obj);
+      
+      obj.alpha = CLEAN_INPUT(obj.alpha, myinput_alpha, 0, 1);
+      obj.beta = CLEAN_INPUT(obj.beta, myinput_beta, 0, 1);
+      
+      myinput_alpha.value = parseFloat(obj.gamma_1).toFixed(2);
+      myinput_beta.value = parseFloat(obj.gamma_2).toFixed(2)
+      
       UPDATE_BOX(b[0], obj);
     });
 

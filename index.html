@@ -44,7 +44,7 @@
   <div class='section margin padding'>
 
     <h4> ces utility </h4>
-    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha} \bigg )^{ 1 / \delta } </span></p>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  \gamma_i x_i^{\alpha} \bigg )^{ 1 / \delta } </span></p>
     <p> where <span class='math'> \alpha = \delta \in (-\infin, 1) </span></p>
     <p> and we define <span class='math'> \sigma = \dfrac{1}{1-\alpha} </span></p>
     
@@ -53,42 +53,55 @@
 
     <p><span class='math'> u = \displaystyle\sum  \dfrac{ x_i^{1/ \alpha} }{\alpha}  </span></p>
     
-    <p> elasticity </p>
+    <p><a href='#the_marshallian_demand'> the marshallian demand </a></p>
+    <p> elasticity : prove it is sigma </p>
     <p> idc </p>
     <p> forms when delta = -infin, 0, 1, else </p>
-    <p> marshallian </p>
-    
+    <p> delta = -infin, what makes it min(ax,by) ? depends on alpha ? </p>
+    <p> do i have to vary the alphas? </p>
   </div>
 </div>
 
-<div class='section margin padding border'>
+<div class='section margin padding border' id='the_marshallian_demand'>
 
-  <p> marshallian demand. </p>
-  <p> the model. u is subject to a linear cost function as an equality constraint. <span class='math'> L = U + \lambda \cdot (M - \sum px) </span> gives us the FOCs as n equations of the form <span class='nowrap'>[1] <span class='math'> L_i = u_i - \lambda \cdot p_i = 0</span></span>, along with the (n+1)th equation <span class='math'> L_{\lambda} = M - \sum px = 0 </span></p> 
+  <h4> marshallian demand </h4>
+  
+  <p> <span class='math'>u</span> is subject to a linear cost function as an equality constraint. <span class='math'> L = U + \lambda \cdot (M - \sum px) </span> gives us the FOCs as n equations of the form <span class='nowrap'>[1] <span class='math'> L_i = u_i - \lambda \cdot p_i = 0</span></span>, along with the (n+1)th equation <span class='math'> L_{\lambda} = M - \sum px = 0 </span></p> 
 
-  <p><span class='math'> u = z^{1/\delta}</span>, so that <span class='nowrap'>[2] <span class='math'> u_1 = \frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1} </span></span></p>
+  <p><span class='math'> u = z^{1/\delta}</span>, so that <span class='nowrap'>[2] <span class='math'> u_1 = \frac{1}{\delta} z^{1/\delta} z^{-1} \gamma_1 \alpha x_1^{\alpha-1} </span></span></p>
   
   <p> using <span class='nowrap'>[1] + [2]</span> we can write <span class='math'> \lambda = \dfrac{u_1}{p_1} </span> for all the n equations. strategically, it makes sense to solve all the n equations in terms of <span class='math'>x_1</span>. starting with <span class='math'>x_2</span>. </p>
   
-  <p> <span class='nowrap'>[3] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} \implies \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_1^{\alpha-1}}{p_1} = \dfrac{\frac{1}{\delta} u z^{-1} \alpha x_2^{\alpha-1}}{p_2} </span></span> which gives <span class='math'> \bigg [ \dfrac{p_2}{p_1} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span></p>
+  <p> <span class='nowrap'>[3a] <span class='math'> \dfrac{u_1}{p_1} = \dfrac{u_2}{p_2} </span></span></p>
+  <p> <span class='nowrap'>[3b] <span class='math'> \dfrac{\frac{1}{\delta} z^{1/\delta} z^{-1} \gamma_1 \alpha x_1^{\alpha-1}}{p_1} = \dfrac{\frac{1}{\delta} z^{1/\delta} z^{-1} \gamma_2 \alpha x_2^{\alpha-1}}{p_2} </span></span></p>
+  
+  <p> <span class='nowrap'>[3c] <span class='math'> \dfrac{ \gamma_1 }{p_1} \cdot x_1^{\alpha-1} = \dfrac{ \gamma_2 }{p_2} \cdot x_2^{\alpha-1} </span></span></p>
+  
+  <p> <span class='nowrap'>[3d] <span class='math'> \bigg [ \dfrac{\gamma_1}{p_1} \cdot \dfrac{p_2}{\gamma_2} \cdot x_1^{\alpha-1} = x_2^{\alpha-1} \bigg ] ^{\frac{1}{\alpha-1}} </span></span></p>
 
-  <p> and the result <span class='nowrap'>[4] <span class='math'> x_2 = \bigg ( \dfrac{p_1}{p_2} \bigg )^{\sigma} x_1 \implies x_2 = p_2^{-\sigma} p_1^{\sigma} x_1 </span></span> or <span class='math border margin padding'> p_2^{\sigma} x_2 = p_1^{\sigma} x_1 </span></p>
+  <p> <span class='nowrap'> [4a] <span class='math'> x_2 = \bigg ( \dfrac{p_1}{\gamma_1} \cdot \dfrac{\gamma_2}{p_2} \bigg )^{\sigma} x_1 </span></span></p>
   
-  <p> the reason i wanted to distinguish <span class='math'>\alpha</span> and <span class='math'>\delta</span> is because we can see from this that the <span class='math'>\delta</span> parameters cancel out.</p>
+  <p> i like the following form, because it shows us the symmetry </p>
+  <p> <span class='nowrap'>[4b] <span class='math'> \bigg ( \dfrac{p_2}{\gamma_2} \bigg ) ^{\sigma} x_2 = \bigg ( \dfrac{ p_1 }{\gamma_1} \bigg ) ^{\sigma} x_1 </span></p>
   
-  <p> you will have n equations like this. dont be stupid. write every <span class='math'>x_i</span> as a function of <span class='math'>x_1</span>, including <span class='math'>x_1</span>, and sub them into the budget constraint <span class='math'>L_{\lambda}</span> </p>
+  <p> it would be easier notation-wise for me to say that <span class='math'> s_i = \dfrac{p_i}{\gamma_i} </span> is the scaled price, so that i can work with the following equation </p>
   
-  <!-- <p> [5a] <span class='math'> M = p_1 \Bigg [ \bigg ( \dfrac{p_1}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] + p_2 \Bigg [ \bigg ( \dfrac{p_2}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] + \dots + p_n \Bigg [ \bigg ( \dfrac{p_n}{p_1} \bigg )^{-\sigma} x_1 \Bigg ] </span></p> -->
+  <p> <span class='nowrap'> [4c] <span class='math'> x_2 = s_2 ^{-\sigma} s_1 ^{\sigma} x_1 </span></span> or</p> 
   
+  <p> the reason i wanted to distinguish between <span class='math'>\alpha</span> and <span class='math'>\delta</span> is because we can see from this that the <span class='math'>\delta</span> parameters have all cancelled out </p>
+ 
+  <p> write every <span class='math'>x_i</span> as a function of <span class='math'>x_1</span>, just like in <span class='inline-code'>4c</span>, including <span class='math'>x_1</span>, and sub them into the budget constraint <span class='math'>L_{\lambda}</span> </p>
   
-  <p><span class='nowrap'> [5a] <span class='math'> M = p_1 \Big [ p_1^{-\sigma} p_1^{\sigma} x_1 \Big ]</span></span> <span class='math'>\text{} + p_2 \Big [ p_2^{-\sigma} p_1^{\sigma} x_1 \Big ]</span> <span class='math'>\text{} + \dots + p_n \Big [ p_n^{-\sigma} p_1^{\sigma} x_1 \Big ] </span></p>
+  <p><span class='nowrap'> [5L] <span class='math'> M = p_1 x_1 + p_2 x_2 + \dots + p_n x_n </span></span></p>
   
-  <p><span class='nowrap'> [5b] <span class='math'> M = p_1^{\sigma} x_1 \Big [ p_1 p_1^{-\sigma} + p_2 p_2^{-\sigma} + \dots + p_n p_n^{-\sigma} \Big ] </span></span></p>
+  <p><span class='nowrap'> [5a] <span class='math'> M = p_1 \Big [ s_1^{-\sigma} s_1^{\sigma} x_1 \Big ]</span></span> <span class='math'>\text{} + p_2 \Big [ s_2^{-\sigma} s_1^{\sigma} x_1 \Big ]</span> <span class='math'>\text{} + \dots + p_n \Big [ s_n^{-\sigma} s_1^{\sigma} x_1 \Big ] </span></p>
   
-  <p><span class='nowrap'> [5c] <span class='math'> M = x_1 \cdot p_1 ^ { \sigma } \cdot \underbrace{ \displaystyle\sum p_k^{1-\sigma} }_{S} </span></span> [look at how convenient result [4] is here] </p>
+  <p><span class='nowrap'> [5b] <span class='math'> M = s_1^{\sigma} x_1 \Big [ p_1 s_1^{-\sigma} + p_2 s_2^{-\sigma} + \dots + p_n s_n^{-\sigma} \Big ] </span></span></p>
   
-  <p> because of symmetry, we get [6] : </p>
-  <div class='section border padding'><span class='math'> x_i^* = \dfrac{1}{\displaystyle\sum p_k^{1-\sigma}} \cdot \dfrac{M}{p_i^{\sigma}} = \dfrac{1}{S} \cdot \dfrac{M}{p_i^{\sigma}} </span></div>
+  <p><span class='nowrap'> [5c] <span class='math'> M = x_1 \cdot s_1 ^ { \sigma } \cdot \underbrace{ \displaystyle\sum p_k s_k^{-\sigma} }_{S} </span></span> [look at how convenient result [4] is here] </p>
+  
+  <p> rearranging gives the final form </p>
+  <p><span class='nowrap'> [6] <span class='math'> x_i^* = \dfrac{1}{\displaystyle\sum p_ks_k^{-\sigma}} \cdot \dfrac{M}{s_i^{\sigma}} = \dfrac{1}{S} \cdot \dfrac{M}{s_i^{\sigma}} </span></span></p>
   
 </div>
 
@@ -159,10 +172,15 @@
       <td><div class='mybuttons margin padding noselect' id='mybutton_alpha_down'>-</div></td>
     </tr>
     <tr><td><span class='math'>\sigma</span> : sigma </td><td><input disabled class='myinputs' style='width: 70px;' type='number' value=0.05 step=0.01 id='myinput_sigma' /></td></tr>
-    <tr><td><span class='math'>\gamma_1</span> : coef_1 </td><td><input class='myinputs' style='width: 70px;' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
+    <tr>
+      <td><span class='math'>\gamma_1</span> : coef_1 </td>
+      <td><input class='myinputs' style='width: 70px;' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td>
+      <td><div class='mybuttons margin padding noselect' id='mybutton_gamma_1_up'>+</div></td>
+      <td><div class='mybuttons margin padding noselect' id='mybutton_gamma_1_down'>-</div></td>
+    </tr>
     <tr>
       <td><span class='math'>\gamma_2</span> : coef_2 </td>
-      <td><input disabled class='myinputs' style='width: 70px;' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td>
+      <td><input disabled class='myinputs' style='width: 70px;' type='number' value=0.30 step=0.01 id='myinput_beta_idc' /></td>
     </tr>
   </table>
 
