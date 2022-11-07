@@ -44,13 +44,19 @@
   <div class='section margin padding'>
 
     <h4> ces utility </h4>
-    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha} \bigg )^{ 1 / \delta } </span> where <span class='math'> \alpha, \delta \in (-\infin, 1) </span></p>
+    <p><span class='math'> u = \bigg ( \displaystyle\sum  x_i^{\alpha} \bigg )^{ 1 / \delta } </span></p>
+    <p> where <span class='math'> \alpha = \delta \in (-\infin, 1) </span></p>
     <p> and we define <span class='math'> \sigma = \dfrac{1}{1-\alpha} </span></p>
     
     <p> assume <span class='math'>\alpha</span> and <span class='math'>\delta</span> are the same. im distinguishing them notationally bc i think it can reveal some interesting things </p>
     <p> sometimes we see this form : </p>
 
     <p><span class='math'> u = \displaystyle\sum  \dfrac{ x_i^{1/ \alpha} }{\alpha}  </span></p>
+    
+    <p> elasticity </p>
+    <p> idc </p>
+    <p> forms when delta = -infin, 0, 1, else </p>
+    <p> marshallian </p>
     
   </div>
 </div>
@@ -148,13 +154,16 @@
   <table class='mytable'>
     <tr>
       <td><span class='math'>\alpha</span> : alpha </td>
-      <td><input class='myinputs' type='number' value=0.01 step=0.01 id='myinput_delta_idc' /></td>
-      <td><div class='mybuttons margin padding noselect' id='myinput_alpha_up'>+</div></td>
-      <td><div class='mybuttons margin padding noselect' id='myinput_alpha_down'>-</div></td>
+      <td><input class='myinputs' type='number' style='width: 70px;' value=0.05 step=0.05 id='myinput_delta_idc' /></td>
+      <td><div class='mybuttons margin padding noselect' id='mybutton_alpha_up'>+</div></td>
+      <td><div class='mybuttons margin padding noselect' id='mybutton_alpha_down'>-</div></td>
     </tr>
-    <tr><td><span class='math'>\sigma</span> : sigma </td><td><input disabled class='myinputs' type='number' value=0.01 step=0.01 id='myinput_sigma' /></td></tr>
-    <tr><td><span class='math'>\gamma_1</span> : coef_1 </td><td><input class='myinputs' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
-    <tr><td><span class='math'>\gamma_2</span> : coef_2 </td><td><input disabled class='myinputs' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td></tr>
+    <tr><td><span class='math'>\sigma</span> : sigma </td><td><input disabled class='myinputs' style='width: 70px;' type='number' value=0.05 step=0.01 id='myinput_sigma' /></td></tr>
+    <tr><td><span class='math'>\gamma_1</span> : coef_1 </td><td><input class='myinputs' style='width: 70px;' type='number' value=0.70 step=0.01 id='myinput_alpha_idc' /></td></tr>
+    <tr>
+      <td><span class='math'>\gamma_2</span> : coef_2 </td>
+      <td><input disabled class='myinputs' style='width: 70px;' type='number' value=0.40 step=0.01 id='myinput_beta_idc' /></td>
+    </tr>
   </table>
 
   </div>

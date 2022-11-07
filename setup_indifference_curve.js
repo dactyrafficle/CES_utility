@@ -5,7 +5,8 @@
   let obj = {
     'delta':null,   // alpha
     'alpha':null,   // gamma_1
-    'beta':null,    // gamma_2 
+    'beta':null,    // gamma_2
+    'sigma':null,
     'u':null,
     'x':5.5,
     'y':4.7
@@ -17,25 +18,33 @@
     myinput_alpha = document.getElementById('myinput_alpha_idc');
     myinput_beta = document.getElementById('myinput_beta_idc');
     
-    myinput_alpha_up = document.getElementById('myinput_alpha_up');
-    myinput_alpha_down = document.getElementById('myinput_alpha_down');
+    mybutton_alpha_up = document.getElementById('mybutton_alpha_up');
+    mybutton_alpha_down = document.getElementById('mybutton_alpha_down');
+    myinput_sigma = document.getElementById('myinput_sigma');
     
-    myinput_alpha_up.addEventListener('click', function() {
+    mybutton_alpha_up.addEventListener('click', function() {
       obj.delta += 0.05;
       myinput_delta.value = obj.delta;
       obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
+      obj.sigma = 1/(1-obj.delta);
+      myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
       UPDATE_BOX(b[0], obj);
     });
-    myinput_alpha_down.addEventListener('click', function() {
+    mybutton_alpha_down.addEventListener('click', function() {
       obj.delta -= 0.05;
       myinput_delta.value = obj.delta;
       obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
+      obj.sigma = 1/(1-obj.delta);
+      myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
       UPDATE_BOX(b[0], obj);
     });
 
     obj.delta = CLEAN_INPUT(obj.delta, myinput_delta, -100, 1);
     obj.alpha = CLEAN_INPUT(obj.alpha, myinput_alpha, 0.01, 15);
     obj.beta = CLEAN_INPUT(obj.beta, myinput_beta, 0.01, 15);
+    
+    obj.sigma = 1/(1-obj.delta);
+    myinput_sigma.value = parseFloat(obj.sigma).toFixed(2);
     
     [myinput_delta, myinput_alpha, myinput_beta].forEach(function(a, index, arr) {
 
