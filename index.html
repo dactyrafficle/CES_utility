@@ -45,6 +45,10 @@
 
     <h4> ces utility </h4>
     <p><span class='math'> u = \bigg ( \displaystyle\sum  \gamma_i x_i^{\alpha} \bigg )^{ 1 / \delta } </span></p>
+    
+    
+    
+    
     <p> where <span class='math'> \alpha = \delta \in (-\infin, 1) </span></p>
     <p> and we define <span class='math'> \sigma = \dfrac{1}{1-\alpha} </span></p>
     
@@ -107,11 +111,18 @@
 </div>
 
 <div class='section margin padding border'>
+  
   <h4> little analysis </h4>
-  <p> its clear that <u>in this case</u>, <span class='math'>\delta</span> has no influence on the optimal allocations </p>
-  <p> why ? </p>
-  <p> right off the bat, i think because there are no weights inside <span class='math'>z</span></p>
-  <p> be careful when testing, since i shorthand wrote <span class='math'> u = z^{1/\delta}</span>, <span class='math'>x^*</span> gets you the max <span class='math'>u</span>, but depending on <span class='math'>\delta</span>, <span class='math'>z</span> wont necessarily be a max. you must look at <span class='math'>u</span> </p>
+  
+  <p> it does appear that when we make <span class='math'>\delta=\alpha</span>, and when <span class='math'>0 \lt \alpha \lt 1</span>, we can get rid of <span class='math'>\delta</span></p>
+  
+  <p> getting rid of <span class='math'>\delta</span> wont change the allocation, regardless of <span class='math'>\alpha</span></p>
+  <p> but i think if you get rid of <span class='math'>\delta</span> entirely, you wont know if you are doing a min or max problem </p>
+  <p> if you keep <span class='math'>\delta=\alpha</span>, youre always doing a max problem here </p>
+  <p> if <span class='math'>\alpha \gt 0</span>, thats easy to see </p>
+  <p> if <span class='math'>\alpha \lt 0</span>, its harder to see so maybe i will spend time on this </p>
+  <p> it seems that either way, the idea is to make <span class='math'>z</span> in <span class='math'>u=z^{1/\delta}</span> as far from 0 as possible </p>
+
   
 </div>
 
@@ -122,6 +133,9 @@
 
   <p><span class='math'>\sigma = \frac{1}{1-\frac{1}{2}} = 2 </span></p>
   <p><span class='math'> x_1^* = \dfrac{1}{\displaystyle\sum p_k^{-1}} \cdot \dfrac{M}{p_1^{2}} </span></p>
+  
+  <p> if <span class='math'>n=2</span>, <span class='math'>S</span> reduces nicely. but solve for <span class='math'>n \gt 2 </span></p>
+  
 </div>
 
 <div class='section margin padding border'> 
